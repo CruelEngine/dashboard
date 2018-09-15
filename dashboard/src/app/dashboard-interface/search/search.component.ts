@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Subject } from 'rxjs';
+import { debounceTime , distinctUntilChanged } from'rxjs/operators';
 
 @Component({
   selector: 'app-search',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchComponent implements OnInit {
 
+  searchSubject : Subject<string> = new Subject<string>();
+  searchInput : string;
   constructor() { }
 
   ngOnInit() {
+    this.searchSubject.pipe(debounceTime(300),distinctUntilChanged()).subscribe(value =>{
+      //value will have your input
+   });
   }
+
+  inputValueChanged(event){
+    this.searchSubject.next(event);
+}
 
 }
