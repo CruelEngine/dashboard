@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Rule } from '../rule';
 
 @Component({
   selector: 'app-interface',
@@ -7,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InterfaceComponent implements OnInit {
 
+
+  tableData : Array<Rule> = [];
   constructor() { }
 
   ngOnInit() {

@@ -9,7 +9,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { NavigationComponent } from './navigation/navigation.component';
 import { DashboardInterfaceModule } from './dashboard-interface/dashboard-interface.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { SearchComponent } from './search/search.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +16,6 @@ import { SearchComponent } from './search/search.component';
     LoginComponent,
     NavigationComponent,
     DashboardComponent,
-    SearchComponent,
   ],
   imports: [
     BrowserModule,

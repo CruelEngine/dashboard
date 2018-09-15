@@ -15,12 +15,12 @@ export class SearchComponent implements OnInit {
 
   ngOnInit() {
     this.searchSubject.pipe(debounceTime(300),distinctUntilChanged()).subscribe(value =>{
-      //value will have your input
+      console.log(value);
    });
   }
 
   inputValueChanged(event){
     this.searchSubject.next(event);
-}
+  }
 
 }
