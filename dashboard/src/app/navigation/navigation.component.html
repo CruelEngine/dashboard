@@ -1,5 +1,7 @@
-<div class='nav'>
-  <div *ngFor='let navigationOption of navigationOptions'>
-    <div routerLink='navigationOption.path'>{{navigationOption.name}}</div>
+<div class='nav-open'></div>
+<div class='nav nav-position'>
+  <div *ngFor='let navigationOption of navigationOptions' class='routes'>
+    <div class='route' [ngClass]='navigationOption.isSelected ? "selected" : ""' routerLink='{{navigationOption.path}}'>{{navigationOption.name}}</div>
   </div>
 </div>
+<div class='nav-position nav-backdrop'></div>

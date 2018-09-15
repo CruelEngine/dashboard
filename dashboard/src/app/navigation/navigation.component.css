@@ -1,4 +1,40 @@
 .nav{
     display:flex;
     flex-direction: column;
+    z-index: 5;
+    background: rgb(47, 85, 151);
+    width: 10%;
+    height: 100%;
+}
+
+
+.nav-backdrop{
+    opacity: 0.2;
+    background: #DCDCDC;
+    width:100%;
+    height:100%;
+    z-index: 3;
+}
+
+.nav-position{
+    position: absolute;
+    top: 0;
+}
+
+.route{
+    margin:0.5rem 1rem;
+    padding:1rem 1rem;
+    color: #FFF;
+    font-size: 1.25rem;
+}
+
+.routes{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: space-around;
+}
+
+.selected{
+    background:rgb(143, 170, 220);
 }
