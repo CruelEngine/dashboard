@@ -6,20 +6,22 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { AppRoutingModule } from './app-routing.module';
-import { InterfaceComponent } from './interface/interface.component';
 import { NavigationComponent } from './navigation/navigation.component';
+import { DashboardInterfaceModule } from './dashboard-interface/dashboard-interface.module';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    InterfaceComponent,
-    NavigationComponent
+    NavigationComponent,
+    DashboardComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    DashboardInterfaceModule
   ],
   providers: [],
   bootstrap: [AppComponent]

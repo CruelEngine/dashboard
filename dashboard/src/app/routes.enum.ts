@@ -1,10 +1,11 @@
+
 export enum Path {
-    LOGIN = "login",
-    DASHBOARD ="dashborad",
+    LOGIN = "dashboard/login",
+    DASHBOARD ="dashboard",
     INTERFACE = "interface",
-    SETTINGs = "settings",
-    USERS = "users",
-    FILE_UPLOAD = "file-upload",
-    ALIAS = "alias",
-    CUSTOM_PROTOCOLS = "custom-protocols"
+    SETTINGs = "dashboard/settings",
+    USERS = "dashboard/users",
+    FILE_UPLOAD = "dashboard/file-upload",
+    ALIAS = "dashboard/alias",
+    CUSTOM_PROTOCOLS = "dashboard/custom-protocols"
 }
