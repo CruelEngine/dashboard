@@ -1,0 +1,7 @@
+<div class='btn-row'>
+  <div class='page'>First</div>
+  <div  class='page'>Previous</div>
+  <div *ngFor='let page of pageObject'  class='page' (click)='pageClicked(page.value)'>{{page.value}}</div>
+  <div  class='page'>Next</div>
+  <div  class='page'>Last</div>
+</div>

@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Rule } from './rule';
+import { FormArray,FormBuilder, FormGroup } from '@angular/forms';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -7,19 +9,53 @@ import { Rule } from './rule';
 export class PaginationService {
 
 
-  tableData : Array<Rule> = [];
+  tableData : FormGroup;
+  
   dataSize : number;
 
-  constructor() { }
+  formValue : any = [];
 
-  setTableData(tableData : Array<Rule> ){
+  dataSizeSubject : Subject<any> = new Subject<any>();
+
+  tableDataSubject : Subject<any> = new Subject<any>();
+
+  pageNumber : number ;
+  constructor(private _fb : FormBuilder) { }
+
+  setTableData(tableData : FormGroup ){
     this.tableData = tableData;
-    this.dataSize = tableData.length;
+    this.getTableData(this.pageNumber,10);
+    this.dataSize = this.tableData.value.rules.length;
+    this.dataSizeSubject.next(this.dataSize);
   }
 
-  getTableData(pagenumber : number){
+  getTableData(pagenumber : number, pageSize : number){
+    let startIndex = (pagenumber- 1) * pageSize;
+    let endIndex = startIndex + pageSize;
+    let formArray = this.tableData.get('rules') as FormArray;
 
+    let formArrayLength = formArray.length;
+
+    if(endIndex >= formArrayLength){
+      endIndex = formArrayLength;
+    }
+
+    this.formValue = this.tableData.value;
+    // let test = formArray.controls.slice(startIndex , endIndex);
+    this.formValue = this.formValue['rules'].slice(startIndex , endIndex);
+    console.log(this.tableData);
+    this.tableDataSubject.next(this.formValue);
   }
 
+
+  getNumberOfPages(){
+    let dataSize = this.tableData.value;
+    return dataSize.rules;
+  }
+
+  pageChanged(pageNumber){
+    this.pageNumber = pageNumber;
+    this.getTableData(pageNumber , 10);
+  }
 
 }

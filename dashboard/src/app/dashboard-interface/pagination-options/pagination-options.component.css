@@ -1,0 +1,9 @@
+.btn-row{
+    display: flex;
+    flex-direction: row;
+}
+
+.page{
+    padding:0.5rem 1rem;
+    border:1px #dcdcdc solid;
+}

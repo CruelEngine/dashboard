@@ -5,29 +5,45 @@
     </div>
     <div>
         <div class='header div-box header-color'>
-            <div>Sr No.</div>
-            <div>Protocol</div>
-            <div>Source Ip</div>
-            <div>Destination Ip</div>
-            <div>Access Type</div>
-            <div>Action</div>
+            <div class='align-center width__5'>Sr No.</div>
+            <div class='align-center width__15'>Protocol</div>
+            <div class='align-center width__15'>Source Ip</div>
+            <div class='align-center width__15'>Destination Ip</div>
+            <div class='align-center width__15'>Access Type</div>
+            <div class='align-center width__5'>Action</div>
         </div>
-        <div class='header'>
+        <div class='header' style='max-height: 80%;overflow-y: auto;'>
             <form [formGroup]='tableRules' class='body'>
-                <div formArrayName="rules" *ngFor="let rule of tableRules.get('rules').controls; let i = index;">
+                <div formArrayName="rules" *ngFor="let rule of rulesArray.controls; let i = index;">
                     <div [formGroupName]="i" class='header content'>
-                        
-                        <div>{{rules.length - i}}</div>
-                        <div>
-                                <input formControlName="protocol" placeholder="">
-                        </div>  
-                        <input formControlName="sourceIp" placeholder="">
-                        <input formControlName="destinationIp" placeholder="">
-                        <input formControlName="accessType" placeholder="">
-                        <div (click)='delete(i)'>Action</div>
+
+                        <div class='align-center width__5' >{{rulesArray.controls.length - i}}</div>
+                        <div class='align-center width__15'>
+                            <select formControlName="protocol" placeholder="">
+                                <option *ngFor='let protocol of protocols' value='{{protocol.value}}'>{{protocol.name}}</option>
+                            </select>
+                        </div>
+                        <div class='align-center width__15'>
+                            <input formControlName="sourceIp" placeholder="Enter Source IP">
+
+                        </div>
+                        <div class='align-center width__15'>
+                            <input formControlName="destinationIp" placeholder="Enter Destination IP">
+                        </div>
+                        <div class='align-center width__15'>
+                            <select formControlName="accessType" placeholder="None">
+                                <option *ngFor='let access of accessType' value='{{access.value}}'>{{access.name}}</option>
+                            </select>
+                        </div>
+                        <div (click)='delete(i)' class='align-center width__5 delete'>Action</div>
                     </div>
                 </div>
             </form>
+        </div>
+    </div>
+    <div>
+        <div>
+            <app-pagination-options></app-pagination-options>
         </div>
     </div>
 </div>

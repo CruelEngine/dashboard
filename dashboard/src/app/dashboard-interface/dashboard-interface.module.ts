@@ -7,6 +7,7 @@ import { DashboardInterfaceRoutingModule } from './dashboard-interface-routing.m
 import { InterfaceComponent } from './interface/interface.component';
 import { SearchComponent } from './search/search.component';
 import { PaginationPipe } from './pagination.pipe';
+import { PaginationOptionsComponent } from './pagination-options/pagination-options.component';
 
 @NgModule({
   imports: [
@@ -15,6 +16,6 @@ import { PaginationPipe } from './pagination.pipe';
     FormsModule,
     ReactiveFormsModule
   ],
-  declarations: [InterfaceComponent, SearchComponent, PaginationPipe]
+  declarations: [InterfaceComponent, SearchComponent, PaginationPipe, PaginationOptionsComponent]
 })
 export class DashboardInterfaceModule { }

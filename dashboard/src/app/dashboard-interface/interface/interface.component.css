@@ -33,3 +33,19 @@
     box-shadow:1px 1px 1px 2px #DCDCDC;
     margin: 1.5rem 5rem;
 }
+
+.align-center{
+    text-align: center;
+}
+
+.width__15{
+    width:15%;
+}
+
+.width__5{
+    width:5%;
+}
+
+.delete{
+    cursor: pointer;
+}
