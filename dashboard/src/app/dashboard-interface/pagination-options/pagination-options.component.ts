@@ -23,8 +23,12 @@ export class PaginationOptionsComponent implements OnInit {
      if(size <=10){
        this.pageSize = 1;
        this._paginationService.pageChanged(this.pageSize);
-     }else
-      this.pageSize = Math.floor(size/10) + size%10;
+     }else{
+        this.pageSize = Math.floor(size/10);
+        if(size%10 < 10){
+          this.pageSize += 1;
+        }
+     }
       this.createPageObject();
     });
 
