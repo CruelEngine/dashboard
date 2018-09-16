@@ -1,21 +1,33 @@
-<app-search></app-search>
-<button (click)='addRule()'>Add More Rule</button>
-<table style='width:100%;'>
-    <thead>
-        <th>Sr No</th>
-        <th>Protocol</th>
-        <th>Source IP</th>
-        <th>Destination IP</th>
-        <th>Access Type</th>
-        <th>Action</th>
-    </thead>
-    <tbody>
-        <tr *ngFor='let date of tableData;let i = index'>
-            <td>{{i}}</td>
-            <td>{{data.protocol}}</td>
-            <td>{{data.sourceIp}}</td>
-            <td>{{data.destinationIp}}</td>
-            <td>{{data.accessType}}</td>
-        </tr>
-    </tbody>
-</table>
+<div style='display: flex;width:100%;flex-direction: column;'>
+    <div class='header'>
+        <button class='btn-rule' (click)='addRule()'>Add More Rule</button>
+        <app-search></app-search>
+    </div>
+    <div>
+        <div class='header div-box header-color'>
+            <div>Sr No.</div>
+            <div>Protocol</div>
+            <div>Source Ip</div>
+            <div>Destination Ip</div>
+            <div>Access Type</div>
+            <div>Action</div>
+        </div>
+        <div class='header'>
+            <form [formGroup]='tableRules' class='body'>
+                <div formArrayName="rules" *ngFor="let rule of tableRules.get('rules').controls; let i = index;">
+                    <div [formGroupName]="i" class='header content'>
+                        
+                        <div>{{rules.length - i}}</div>
+                        <div>
+                                <input formControlName="protocol" placeholder="">
+                        </div>  
+                        <input formControlName="sourceIp" placeholder="">
+                        <input formControlName="destinationIp" placeholder="">
+                        <input formControlName="accessType" placeholder="">
+                        <div (click)='delete(i)'>Action</div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

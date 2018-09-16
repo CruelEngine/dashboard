@@ -3,7 +3,6 @@
     flex-direction: column;
     z-index: 5;
     background: rgb(47, 85, 151);
-    width: 10%;
     height: 100%;
 }
 
@@ -17,8 +16,6 @@
 }
 
 .nav-position{
-    position: absolute;
-    top: 0;
 }
 
 .route{
