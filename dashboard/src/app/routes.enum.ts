@@ -1,6 +1,6 @@
 
 export enum Path {
-    LOGIN = "dashboard/login",
+    LOGIN = "login",
     DASHBOARD ="dashboard",
     INTERFACE = "interface",
     SETTINGs = "dashboard/settings",

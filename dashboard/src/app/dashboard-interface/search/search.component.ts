@@ -15,7 +15,7 @@ export class SearchComponent implements OnInit {
 
   ngOnInit() {
     this.searchSubject.pipe(debounceTime(300),distinctUntilChanged()).subscribe(value =>{
-      console.log(value);
+      this.inputValueChanged(value);
    });
   }
 

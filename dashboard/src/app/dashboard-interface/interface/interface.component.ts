@@ -6,6 +6,7 @@ import { Dropdown } from '../dropdown';
 import { PaginationService } from '../pagination.service';
 import { LocalstorageService } from '../localstorage.service';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { SearchService } from '../search.service';
 
 @Component({
   selector: 'app-interface',
@@ -31,7 +32,8 @@ export class InterfaceComponent implements OnInit {
 
   pageSize = 10;
   constructor(private _fb: FormBuilder , private _paginationService : PaginationService , 
-    private _cdr : ChangeDetectorRef , private _localstorageService : LocalstorageService) { }
+    private _cdr : ChangeDetectorRef , private _localstorageService : LocalstorageService,
+    private _searchService : SearchService) { }
 
   ngOnInit() {
     this.tableRules = this._fb.group({
@@ -55,6 +57,11 @@ export class InterfaceComponent implements OnInit {
 
     this._paginationService.tableDataSubject.subscribe((data) => {
       this.createPaginatedForm(data);
+    });
+
+
+    this._searchService.searchSubject.subscribe((value) =>{
+      //doo stuff
     });
   }
 
@@ -87,7 +94,7 @@ export class InterfaceComponent implements OnInit {
   }
 
   get rulesArray(){
-    return this.ruleArray.get('rules') as FormArray;
+    return this.tableRules.get('rules') as FormArray;
   }
 
   createPaginatedForm(formValue : any){
