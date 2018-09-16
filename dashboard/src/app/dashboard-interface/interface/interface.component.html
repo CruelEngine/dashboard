@@ -1,6 +1,6 @@
 <div style='display: flex;width:100%;flex-direction: column;'>
     <div class='header'>
-        <button class='btn-rule' (click)='addRule()'>Add More Rule</button>
+        <button class='btn-rule' (click)='addRule()' [disabled]='!tableRules.valid'>Add More Rule</button>
         <app-search></app-search>
     </div>
     <div>
@@ -24,11 +24,11 @@
                             </select>
                         </div>
                         <div class='align-center width__15'>
-                            <input formControlName="sourceIp" placeholder="Enter Source IP">
+                            <input ipValidator formControlName="sourceIp" placeholder="Enter Source IP">
 
                         </div>
                         <div class='align-center width__15'>
-                            <input formControlName="destinationIp" placeholder="Enter Destination IP">
+                            <input ipValidator formControlName="destinationIp" placeholder="Enter Destination IP">
                         </div>
                         <div class='align-center width__15'>
                             <select formControlName="accessType" placeholder="None">
