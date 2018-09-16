@@ -10,6 +10,7 @@ import { NavigationComponent } from './navigation/navigation.component';
 import { DashboardInterfaceModule } from './dashboard-interface/dashboard-interface.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { IpValidatorDirective } from './dashboard-interface/ip-validator.directive';
+import { LocalstorageDirective } from './dashboard-interface/localstorage.directive';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { IpValidatorDirective } from './dashboard-interface/ip-validator.directi
     NavigationComponent,
     DashboardComponent,
     IpValidatorDirective,
+    LocalstorageDirective,
   ],
   imports: [
     BrowserModule,

@@ -4,6 +4,8 @@ import { Tableheader } from '../tableheader';
 import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
 import { Dropdown } from '../dropdown';
 import { PaginationService } from '../pagination.service';
+import { LocalstorageService } from '../localstorage.service';
+import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
 @Component({
   selector: 'app-interface',
@@ -28,7 +30,8 @@ export class InterfaceComponent implements OnInit {
   ruleArray : FormGroup;
 
   pageSize = 10;
-  constructor(private _fb: FormBuilder , private _paginationService : PaginationService , private _cdr : ChangeDetectorRef) { }
+  constructor(private _fb: FormBuilder , private _paginationService : PaginationService , 
+    private _cdr : ChangeDetectorRef , private _localstorageService : LocalstorageService) { }
 
   ngOnInit() {
     this.tableRules = this._fb.group({
@@ -73,11 +76,13 @@ export class InterfaceComponent implements OnInit {
   delete(index : number){
     let rules = this.tableRules.get('rules') as FormArray;
     rules.removeAt(index);
+    this._paginationService.setTableData(this.tableRules);
   }
 
   formValueChangeListener(){
-    this.tableRules.valueChanges.subscribe( (data) => {
+    this.tableRules.valueChanges.pipe(debounceTime(500),distinctUntilChanged()).subscribe( (data) => {
       this.formData = data;
+      this._localstorageService.setItem('table-rules',JSON.stringify(data));
     });
   }
 
