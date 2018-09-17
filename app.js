@@ -1,30 +1,18 @@
 const express = require('express');
 const path = require('path');
 const app = express();
+const http = require('http');
 const cookieParser = require('cookie-parser');
 const PORT=3000;
 
 
 app.use(cookieParser());
-app.use(express.static(__dirname+'/dist'));
+app.use(express.static(__dirname+'/dist/'));
 
 
-app.use((req, res, next) =>{
-    let cookie = req.cookies.cookieName;
-    if (cookie === undefined)
-    {
-      let timestamp=new Date().getTime();
-      res.cookie('cookieName',timestamp, { httpOnly: true });
-      console.log('cookie created successfully');
-    } 
-    else
-    {
-      console.log('cookie exists', cookie);
-    } 
-    next();
-  });
+const port = process.env.PORT || 3000;
 
-
+app.set('port' , port);
 
 
 app.get('/api' , (req,res)=>{
@@ -37,7 +25,8 @@ app.get('*',(req,res) => {
 });
 
 
+const server = http.createServer(app);
 
-app.listen(PORT, ()=>{
-    console.log("App up and running . Listening to Port : " + PORT);
-});
+server.listen(port , ()=> {
+  console.log('app up and running at : ' + port);
+})
