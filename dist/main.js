@@ -1341,13 +1341,13 @@ var NavigationComponent = /** @class */ (function () {
         this._activatedroute = _activatedroute;
         this._router = _router;
         this.navigationOptions = [
-            { name: 'Dashboard', path: _routes_enum__WEBPACK_IMPORTED_MODULE_1__["Path"].DASHBOARD, isSelected: false },
+            { name: 'Dashboard', path: '', isSelected: false },
             { name: 'Interface', path: _routes_enum__WEBPACK_IMPORTED_MODULE_1__["Path"].INTERFACE, isSelected: true },
-            { name: 'Settings', path: _routes_enum__WEBPACK_IMPORTED_MODULE_1__["Path"].SETTINGs, isSelected: false },
-            { name: 'Users', path: _routes_enum__WEBPACK_IMPORTED_MODULE_1__["Path"].USERS, isSelected: false },
-            { name: 'File Upload', path: _routes_enum__WEBPACK_IMPORTED_MODULE_1__["Path"].FILE_UPLOAD, isSelected: false },
-            { name: 'Alias', path: _routes_enum__WEBPACK_IMPORTED_MODULE_1__["Path"].ALIAS, isSelected: false },
-            { name: 'Custom Protocols', path: _routes_enum__WEBPACK_IMPORTED_MODULE_1__["Path"].CUSTOM_PROTOCOLS, isSelected: false }
+            { name: 'Settings', path: '', isSelected: false },
+            { name: 'Users', path: '', isSelected: false },
+            { name: 'File Upload', path: '', isSelected: false },
+            { name: 'Alias', path: '', isSelected: false },
+            { name: 'Custom Protocols', path: '', isSelected: false }
         ];
     }
     NavigationComponent.prototype.ngOnInit = function () {

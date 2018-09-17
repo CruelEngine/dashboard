@@ -11,13 +11,13 @@ import { ActivatedRoute,Router } from '@angular/router';
 export class NavigationComponent implements OnInit {
 
   navigationOptions : Array<NavigationOptions> = [
-    { name : 'Dashboard' , path : Path.DASHBOARD , isSelected:false},
+    { name : 'Dashboard' , path : '' , isSelected:false},
     { name : 'Interface' , path : Path.INTERFACE ,  isSelected:true},
-    { name : 'Settings' , path : Path.SETTINGs , isSelected:false},
-    { name : 'Users' , path : Path.USERS , isSelected:false},
-    { name : 'File Upload' , path : Path.FILE_UPLOAD , isSelected:false},
-    { name : 'Alias' , path : Path.ALIAS , isSelected:false },
-    { name : 'Custom Protocols' , path : Path.CUSTOM_PROTOCOLS , isSelected:false}
+    { name : 'Settings' , path : '' , isSelected:false},
+    { name : 'Users' , path : '' , isSelected:false},
+    { name : 'File Upload' , path : '' , isSelected:false},
+    { name : 'Alias' , path : '' , isSelected:false },
+    { name : 'Custom Protocols' , path : '' , isSelected:false}
   ]
 
   constructor(private _activatedroute : ActivatedRoute , private _router : Router) { }
