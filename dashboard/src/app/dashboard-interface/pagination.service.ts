@@ -19,7 +19,7 @@ export class PaginationService {
 
   tableDataSubject : Subject<any> = new Subject<any>();
 
-  pageNumber : number ;
+  pageNumber : number = 1 ;
   constructor(private _fb : FormBuilder) { }
 
   setTableData(tableData : FormGroup ){

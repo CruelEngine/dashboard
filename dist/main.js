@@ -456,6 +456,7 @@ var InterfaceComponent = /** @class */ (function () {
         this._searchService.searchSubject.subscribe(function (value) {
             _this.createPaginatedForm(_this._paginationService.searchTableData(value));
         });
+        this.initForm();
     };
     InterfaceComponent.prototype.addRule = function () {
         this.rules = this.tableRules.get('rules');
@@ -505,6 +506,27 @@ var InterfaceComponent = /** @class */ (function () {
             });
             ruleArray.push(formGroup);
         }
+    };
+    InterfaceComponent.prototype.initForm = function () {
+        var tableRules = JSON.parse(localStorage.getItem('table-rules'));
+        if (tableRules == null || tableRules['rules'].length == 0) {
+            return;
+        }
+        var ruleArray = this.tableRules.get('rules');
+        for (var i = 0; i < tableRules['rules'].length; i++) {
+            ruleArray.push(this.addRow(tableRules['rules'][i]));
+        }
+        this.pageLength = tableRules['rules'].length;
+        this._paginationService.setTableData(this.tableRules);
+    };
+    InterfaceComponent.prototype.addRow = function (formValue) {
+        var ipPattern = "(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)/([1-9]|1[0-9]|2[0-9]|3[0-2]|(((128|192|224|240|248|252|254)\.0\.0\.0)|(255\.(0|128|192|224|240|248|252|254)\.0\.0)|(255\.255\.(0|128|192|224|240|248|252|254)\.0)|(255\.255\.255\.(0|128|192|224|240|248|252|254))))";
+        return this._fb.group({
+            protocol: [formValue.protocol, _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required],
+            sourceIp: [formValue.sourceIp, [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].pattern(ipPattern), _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required]],
+            destinationIp: [formValue.destinationIp, [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].pattern(ipPattern), _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required]],
+            accessType: [formValue.accessType, _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required]
+        });
     };
     InterfaceComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -864,6 +886,7 @@ var PaginationService = /** @class */ (function () {
         this.formValue = [];
         this.dataSizeSubject = new rxjs__WEBPACK_IMPORTED_MODULE_2__["Subject"]();
         this.tableDataSubject = new rxjs__WEBPACK_IMPORTED_MODULE_2__["Subject"]();
+        this.pageNumber = 1;
     }
     PaginationService.prototype.setTableData = function (tableData) {
         this.tableData = tableData;
@@ -1593,7 +1616,7 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 var PopupComponent = /** @class */ (function () {
     function PopupComponent(_popupService) {
         this._popupService = _popupService;
-        this.showPopup = true;
+        this.showPopup = false;
         this.dialogClosed = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
     }
     PopupComponent.prototype.ngOnInit = function () {

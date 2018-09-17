@@ -9,7 +9,7 @@ import { PopupService } from '../popup.service';
 export class PopupComponent implements OnInit {
 
 
-  showPopup: boolean = true;
+  showPopup: boolean = false;
   @Output() dialogClosed: EventEmitter<boolean> = new EventEmitter<boolean>();
 
 

@@ -69,6 +69,8 @@ export class InterfaceComponent implements OnInit {
     this._searchService.searchSubject.subscribe((value) =>{
       this.createPaginatedForm(this._paginationService.searchTableData(value));
     });
+
+    this.initForm();
   }
 
   addRule() {
@@ -120,6 +122,33 @@ export class InterfaceComponent implements OnInit {
       });
       ruleArray.push(formGroup);
     }
+  }
+
+
+
+  initForm(){
+    let tableRules = JSON.parse(localStorage.getItem('table-rules'));
+
+    if( tableRules == null || tableRules['rules'].length == 0 ){
+      return;
+    }
+
+    let ruleArray = this.tableRules.get('rules') as FormArray;
+    for(let i =0 ; i < tableRules['rules'].length; i++){
+      ruleArray.push(this.addRow(tableRules['rules'][i]));
+    }
+    this.pageLength = tableRules['rules'].length;
+    this._paginationService.setTableData(this.tableRules);
+  }
+
+  addRow(formValue : any){
+    const ipPattern = "(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)/([1-9]|1[0-9]|2[0-9]|3[0-2]|(((128|192|224|240|248|252|254)\.0\.0\.0)|(255\.(0|128|192|224|240|248|252|254)\.0\.0)|(255\.255\.(0|128|192|224|240|248|252|254)\.0)|(255\.255\.255\.(0|128|192|224|240|248|252|254))))";
+    return this._fb.group({
+      protocol: [formValue.protocol,Validators.required],
+      sourceIp: [formValue.sourceIp,[Validators.pattern(ipPattern) , Validators.required]],
+      destinationIp: [formValue.destinationIp,[Validators.pattern(ipPattern) , Validators.required]],
+      accessType: [formValue.accessType,Validators.required]
+    });
   }
   
 }
