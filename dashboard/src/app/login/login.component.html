@@ -1,6 +1,5 @@
 <div class='login-window window-center border-round'>
-  <div class='login-detail'>
-    <form [formGroup]='loginForm' (ngSubmit)='login(loginForm.value)'>
+    <form [formGroup]='loginForm' (ngSubmit)='login(loginForm.value)' class='login-detail'>
         <h1>Nubewell Networks</h1>
         <div class='login-align '>
           <input class='login-input border-round' placeholder='Username' formControlName='username'/>
@@ -12,8 +11,6 @@
           <button class='login-btn border-round' >Login</button>
         </div>
     </form>
-
-  </div>
 </div>
 
 <div class='background'></div>
