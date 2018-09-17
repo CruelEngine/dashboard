@@ -152,17 +152,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _navigation_navigation_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./navigation/navigation.component */ "./src/app/navigation/navigation.component.ts");
 /* harmony import */ var _dashboard_interface_dashboard_interface_module__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./dashboard-interface/dashboard-interface.module */ "./src/app/dashboard-interface/dashboard-interface.module.ts");
 /* harmony import */ var _dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./dashboard/dashboard.component */ "./src/app/dashboard/dashboard.component.ts");
-/* harmony import */ var _dashboard_interface_ip_validator_directive__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./dashboard-interface/ip-validator.directive */ "./src/app/dashboard-interface/ip-validator.directive.ts");
-/* harmony import */ var _dashboard_interface_localstorage_directive__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./dashboard-interface/localstorage.directive */ "./src/app/dashboard-interface/localstorage.directive.ts");
-/* harmony import */ var _popup_popup_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./popup/popup.component */ "./src/app/popup/popup.component.ts");
+/* harmony import */ var _popup_popup_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./popup/popup.component */ "./src/app/popup/popup.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-
-
 
 
 
@@ -183,9 +179,7 @@ var AppModule = /** @class */ (function () {
                 _login_login_component__WEBPACK_IMPORTED_MODULE_4__["LoginComponent"],
                 _navigation_navigation_component__WEBPACK_IMPORTED_MODULE_6__["NavigationComponent"],
                 _dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_8__["DashboardComponent"],
-                _dashboard_interface_ip_validator_directive__WEBPACK_IMPORTED_MODULE_9__["IpValidatorDirective"],
-                _dashboard_interface_localstorage_directive__WEBPACK_IMPORTED_MODULE_10__["LocalstorageDirective"],
-                _popup_popup_component__WEBPACK_IMPORTED_MODULE_11__["PopupComponent"],
+                _popup_popup_component__WEBPACK_IMPORTED_MODULE_9__["PopupComponent"],
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
@@ -539,110 +533,6 @@ var InterfaceComponent = /** @class */ (function () {
             _search_service__WEBPACK_IMPORTED_MODULE_5__["SearchService"]])
     ], InterfaceComponent);
     return InterfaceComponent;
-}());
-
-
-
-/***/ }),
-
-/***/ "./src/app/dashboard-interface/ip-validator.directive.ts":
-/*!***************************************************************!*\
-  !*** ./src/app/dashboard-interface/ip-validator.directive.ts ***!
-  \***************************************************************/
-/*! exports provided: IpValidatorDirective */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "IpValidatorDirective", function() { return IpValidatorDirective; });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
-var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (undefined && undefined.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-var __param = (undefined && undefined.__param) || function (paramIndex, decorator) {
-    return function (target, key) { decorator(target, key, paramIndex); }
-};
-
-
-var IpValidatorDirective = /** @class */ (function () {
-    function IpValidatorDirective(ipValidator) {
-        this.ipValidator = ipValidator;
-    }
-    IpValidatorDirective_1 = IpValidatorDirective;
-    IpValidatorDirective.prototype.validate = function (control) {
-        var ipRegexp = /^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/;
-        var isValid = ipRegexp.test(control.value);
-        if (isValid) {
-            return null;
-        }
-        else {
-            return {
-                ipValidator: false
-            };
-        }
-    };
-    var IpValidatorDirective_1;
-    IpValidatorDirective = IpValidatorDirective_1 = __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"])({
-            selector: '[ipValidator][formControlName],[ipValidator][formControl]',
-            providers: [
-                {
-                    provide: _angular_forms__WEBPACK_IMPORTED_MODULE_1__["NG_VALIDATORS"],
-                    useExisting: Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["forwardRef"])(function () {
-                        IpValidatorDirective_1;
-                    }),
-                    multi: true
-                }
-            ]
-        }),
-        __param(0, Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Attribute"])('ipValidator')),
-        __metadata("design:paramtypes", [String])
-    ], IpValidatorDirective);
-    return IpValidatorDirective;
-}());
-
-
-
-/***/ }),
-
-/***/ "./src/app/dashboard-interface/localstorage.directive.ts":
-/*!***************************************************************!*\
-  !*** ./src/app/dashboard-interface/localstorage.directive.ts ***!
-  \***************************************************************/
-/*! exports provided: LocalstorageDirective */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LocalstorageDirective", function() { return LocalstorageDirective; });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (undefined && undefined.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-var LocalstorageDirective = /** @class */ (function () {
-    function LocalstorageDirective() {
-    }
-    LocalstorageDirective = __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"])({
-            selector: '[appLocalstorage]'
-        }),
-        __metadata("design:paramtypes", [])
-    ], LocalstorageDirective);
-    return LocalstorageDirective;
 }());
 
 
