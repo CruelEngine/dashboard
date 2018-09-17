@@ -41,7 +41,6 @@ export class PaginationService {
     }
 
     this.formValue = this.tableData.value;
-    // let test = formArray.controls.slice(startIndex , endIndex);
     this.formValue = this.formValue['rules'].slice(startIndex , endIndex);
     console.log(this.tableData);
     this.tableDataSubject.next(this.formValue);
@@ -56,6 +55,20 @@ export class PaginationService {
   pageChanged(pageNumber){
     this.pageNumber = pageNumber;
     this.getTableData(pageNumber , 10);
+  }
+
+
+  searchTableData(searchPhrase : string){
+    let formValue = this.tableData.value['rules'];
+
+    formValue = formValue.filter( (value) =>{
+       if((value.sourceIp.indexOf(searchPhrase) > -1  ) || (value.destinationIp.indexOf(searchPhrase) > -1  ) || (value.protocol.indexOf(searchPhrase) > -1  ) || (value.accessType.indexOf(searchPhrase) > -1 ) ){
+         return value;
+       }
+    });
+
+    return formValue;
+
   }
 
 }
