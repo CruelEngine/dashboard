@@ -6,7 +6,7 @@ const PORT=3000;
 
 
 app.use(cookieParser());
-app.use(express.static('${__dirname}'+'/dist'));
+app.use(express.static(__dirname+'/dist'));
 
 
 app.use((req, res, next) =>{
@@ -25,11 +25,6 @@ app.use((req, res, next) =>{
   });
 
 
-  app.get('/' , (req, res) =>{
-    console.log('Test');
-  });
-
-
 
 
 app.get('/api' , (req,res)=>{
@@ -38,7 +33,7 @@ app.get('/api' , (req,res)=>{
 
 
 app.get('*',(req,res) => {
-    res.sendFile(path.join(__dirname));
+    res.sendFile(path.join(__dirname,'dist/index.html'));
 });
 
 
