@@ -1,12 +1,15 @@
 .btn-rule{
-    border: blue 2px solid;
-    color: blue;
-    box-shadow: 1px 1px 2px 0px lightblue;
+    border: #DCDCDC 2px solid;
+    color: #000;
+    box-shadow: 1px 1px 2px 0px #DCDCDC;
     background: #FFF;
     padding: 0.1rem 0.2rem;
     height: fit-content;
     font-size: 0.1rem;
     margin:0.1rem 0.1rem;
+    border-radius: 1rem;
+    outline: none;
+    cursor: pointer;
 }
 
 
@@ -62,6 +65,12 @@ select , input{
     padding: 0.1rem 0.15rem;
     font-size: 0.2rem;
     border-radius: 0.1rem;
+    outline: none;
+}
+
+img{
+    width: 10px;
+    height: 10px;
 }
 
 
@@ -83,7 +92,7 @@ select , input{
         border: #DCDCDC 1px solid;
         padding: 0.25rem 0.25rem;
         font-size: inherit;
-        border-radius: 0.75rem;
+        border-radius: 0.5rem;
     }
     .btn-rule{
         background: #FFF;
@@ -95,6 +104,10 @@ select , input{
     }
     .width__15{
         width:15%;
+    }
+    img{
+        width:40px;
+        height: 40px;
     }
     
 }

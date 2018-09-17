@@ -25,11 +25,11 @@
                             </select>
                         </div>
                         <div class='align-center width__15'>
-                            <input formControlName="sourceIp" placeholder="Enter Source IP">
+                            <input formControlName="sourceIp" placeholder="Source IP">
 
                         </div>
                         <div class='align-center width__15'>
-                            <input formControlName="destinationIp" placeholder="Enter Destination IP">
+                            <input formControlName="destinationIp" placeholder="Destination IP">
                         </div>
                         <div class='align-center width__15'>
                             <select formControlName="accessType">
@@ -37,7 +37,7 @@
                                 <option *ngFor='let access of accessType' value='{{access.value}}'>{{access.name}}</option>
                             </select>
                         </div>
-                        <div (click)='delete(i)' class='align-center width__15 delete'>Action</div>
+                        <div (click)='delete(i)' class='align-center width__15 delete'><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAM2SURBVGhD7VnLahRBFJ21b/H1FyrMdAVDYKArgSxcqUFByF7N1i8Yo24CLhSXIhHx8RE+FjE+iC71B3R8YGa6B+IskvHc9k4YJ7e6u/o5hDlwYOi+de85XdXVVTWVMcYYozj4M2eO+66a87Wz2NHO845Wr/D7A7Hjqpd0je55rrpAsdxsNLBeP3UI4hfA975WWxDfi0OKhalVaks5OF3xCAxodRtP2ZOEWtF12tRThRtC8XkMlR87BKWm04Shy1wmP/ycnNwPA49kERkSNb7X6/u4bLbw3YkTGM9rYuEcSBME1eTy2cCbPX0MT+mLVDBXoibVZhnpQMMJT+eTWKgA0myYyTDDC/hYKlAwl1lOMiDB/FDC0ph4NmtNTR3OZ4pNSqeZ6Dvz72MnJSyPvuvcZHnxQM5tv9gb1xd63btL4j2JFEttpHtGuqpl1Su0/hETGUiCen82eoTu/TtizCApJgDa2JrxdO0qy4wGhtVbKYnEQRN9hJnZNtGHpRkMrzcsMxzBUtxiFdu9t8SK/odkZocJBuUYjjURo2XTq1ePslwzEDgnJQijUeCAmTgxcenpifMs1wyaGaTGUQwTmqUJIkbMDZZrBgKfDTeMS5NgCUlNBHTVE5ZrBqbd12LjmIxjJpUJIrbNLNcMvCMfxcYWDDOT2gQIjWss1wwKkhrbcCSM7JqhhcDd8bLTaYbYOIImE3Q97J6UK4oYWg2WawaCdscHkfbIo75EaWvnCMsNB4bXqpREYvGLRrXCMqOB4GtSEhMHzcQZKttmLE0QPe1cYZnRCDZWrtOWEplIgnLfWGm1br3dRa/cEhKVyliLxWHwdrcpJSyDMPHt16w6wPLsQEcwUtIy6OvaRZaVDEiyPJy0aGKP9JDlJAcdV+J9eScVKIL0Keidre5hOelQ2iG2Vp8zO8TuI/hbgf4LlAtmThoFmZvog4YZeib3P3owQz3Ymjm5l8vmB5rNaDqURKQheuErev4SlykG9J2BoUXbFYBIV7VgovF7unqQ0xePwBDWZuAKuCkKFUix1IaOQEs1IIFOAL3p2jkIbOApP0VvvaAJIpgk8Juu0T2Kib0UH2OMMTJApfIXdHQ+5TJKT4cAAAAASUVORK5CYII="></div>
                     </div>
                 </div>
             </form>

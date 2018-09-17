@@ -7,7 +7,7 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/* You can add global styles to this file, and also import other style files */\n\n\n/**\n    By default body and html has padding and margin . \n    also we are setting width and height to be 100%\n*/\n\n\nhtml,body{\n    width: 100%;\n    height: 100%;\n    padding:0;\n    margin:0;\n}"
+module.exports = "/* You can add global styles to this file, and also import other style files */\n\n\n/**\n    By default body and html has padding and margin . \n    also we are setting width and height to be 100%\n*/\n\n\nhtml,body{\n    width: 100%;\n    height: 100%;\n    padding:0;\n    margin:0;\n}\n\n\ninput,select{\n    outline: none;\n}"
 
 /***/ }),
 
