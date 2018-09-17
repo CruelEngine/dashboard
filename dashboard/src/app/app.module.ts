@@ -11,6 +11,7 @@ import { DashboardInterfaceModule } from './dashboard-interface/dashboard-interf
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { IpValidatorDirective } from './dashboard-interface/ip-validator.directive';
 import { LocalstorageDirective } from './dashboard-interface/localstorage.directive';
+import { PopupComponent } from './popup/popup.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { LocalstorageDirective } from './dashboard-interface/localstorage.direct
     DashboardComponent,
     IpValidatorDirective,
     LocalstorageDirective,
+    PopupComponent,
   ],
   imports: [
     BrowserModule,
