@@ -20,7 +20,7 @@
                         <div class='align-center width__5' >{{rulesArray.controls.length - i}}</div>
                         <div class='align-center width__15'>
                             <select formControlName="protocol">
-                                    <option value='' disabled selected>None</option>
+                                <option value='' disabled selected>None</option>
                                 <option *ngFor='let protocol of protocols' value='{{protocol.value}}'>{{protocol.name}}</option>
                             </select>
                         </div>

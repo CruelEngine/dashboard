@@ -38,6 +38,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _login_login_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./login/login.component */ "./src/app/login/login.component.ts");
 /* harmony import */ var _routes_enum__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./routes.enum */ "./src/app/routes.enum.ts");
 /* harmony import */ var _dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./dashboard/dashboard.component */ "./src/app/dashboard/dashboard.component.ts");
+/* harmony import */ var _canloaddashboard_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./canloaddashboard.service */ "./src/app/canloaddashboard.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -49,10 +50,11 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 
+
 var routes = [
     { path: '', redirectTo: _routes_enum__WEBPACK_IMPORTED_MODULE_3__["Path"].LOGIN, pathMatch: 'full' },
     { path: _routes_enum__WEBPACK_IMPORTED_MODULE_3__["Path"].LOGIN, component: _login_login_component__WEBPACK_IMPORTED_MODULE_2__["LoginComponent"] },
-    { path: _routes_enum__WEBPACK_IMPORTED_MODULE_3__["Path"].DASHBOARD, component: _dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_4__["DashboardComponent"] }
+    { path: _routes_enum__WEBPACK_IMPORTED_MODULE_3__["Path"].DASHBOARD, component: _dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_4__["DashboardComponent"], canActivate: [_canloaddashboard_service__WEBPACK_IMPORTED_MODULE_5__["CanloaddashboardService"]] }
 ];
 var AppRoutingModule = /** @class */ (function () {
     function AppRoutingModule() {
@@ -199,6 +201,63 @@ var AppModule = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/canloaddashboard.service.ts":
+/*!*********************************************!*\
+  !*** ./src/app/canloaddashboard.service.ts ***!
+  \*********************************************/
+/*! exports provided: CanloaddashboardService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CanloaddashboardService", function() { return CanloaddashboardService; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _permission_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./permission.service */ "./src/app/permission.service.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var CanloaddashboardService = /** @class */ (function () {
+    function CanloaddashboardService(_permissions, _router) {
+        this._permissions = _permissions;
+        this._router = _router;
+    }
+    CanloaddashboardService.prototype.canActivate = function (route, state) {
+        // let test = ;
+        if (this._permissions.canLoadDashboard()) {
+            return true;
+        }
+        this._router.navigate(['/login']);
+    };
+    CanloaddashboardService.prototype.canLoad = function (route) {
+        if (this._permissions.canLoadDashboard()) {
+            return true;
+        }
+        this._router.navigate(['/login']);
+        return false;
+    };
+    CanloaddashboardService = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
+            providedIn: 'root'
+        }),
+        __metadata("design:paramtypes", [_permission_service__WEBPACK_IMPORTED_MODULE_2__["PermissionService"], _angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"]])
+    ], CanloaddashboardService);
+    return CanloaddashboardService;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/dashboard-interface/dashboard-interface-routing.module.ts":
 /*!***************************************************************************!*\
   !*** ./src/app/dashboard-interface/dashboard-interface-routing.module.ts ***!
@@ -215,6 +274,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _interface_interface_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./interface/interface.component */ "./src/app/dashboard-interface/interface/interface.component.ts");
 /* harmony import */ var _dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../dashboard/dashboard.component */ "./src/app/dashboard/dashboard.component.ts");
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var _canloaddashboard_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../canloaddashboard.service */ "./src/app/canloaddashboard.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -227,8 +287,9 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 
+
 var routes = [
-    { path: _routes_enum__WEBPACK_IMPORTED_MODULE_2__["Path"].DASHBOARD, component: _dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_4__["DashboardComponent"], children: [
+    { path: _routes_enum__WEBPACK_IMPORTED_MODULE_2__["Path"].DASHBOARD, canActivate: [_canloaddashboard_service__WEBPACK_IMPORTED_MODULE_6__["CanloaddashboardService"]], canLoad: [_canloaddashboard_service__WEBPACK_IMPORTED_MODULE_6__["CanloaddashboardService"]], component: _dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_4__["DashboardComponent"], children: [
             { path: _routes_enum__WEBPACK_IMPORTED_MODULE_2__["Path"].INTERFACE, component: _interface_interface_component__WEBPACK_IMPORTED_MODULE_3__["InterfaceComponent"] }
         ] }
 ];
@@ -308,7 +369,7 @@ var DashboardInterfaceModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".btn-rule{\r\n    border: blue 2px solid;\r\n    color: blue;\r\n    box-shadow: 1px 1px 2px 0px lightblue;\r\n    background: #FFF;\r\n}\r\n\r\n\r\n.header{\r\n    display:flex;\r\n    flex-direction: row;\r\n    justify-content: space-between;\r\n}\r\n\r\n\r\n.body{\r\n    width:100%;\r\n}\r\n\r\n\r\n.div-box{\r\n    box-shadow: 2px 5px 2px 2px #DCDCDC;\r\n    margin: 0.2rem 5rem;\r\n    padding:0.25rem 0.1rem;\r\n}\r\n\r\n\r\n.header-color{\r\n    background: lightgreen;\r\n    color: #000;\r\n}\r\n\r\n\r\n.content{\r\n    padding: 1rem 1rem;\r\n    box-shadow:1px 1px 1px 2px #DCDCDC;\r\n    margin: 1.5rem 5rem;\r\n}\r\n\r\n\r\n.align-center{\r\n    text-align: center;\r\n}\r\n\r\n\r\n.width__15{\r\n    width:15%;\r\n}\r\n\r\n\r\n.width__5{\r\n    width:5%;\r\n}\r\n\r\n\r\n.delete{\r\n    cursor: pointer;\r\n}"
+module.exports = ".btn-rule{\r\n    border: blue 2px solid;\r\n    color: blue;\r\n    box-shadow: 1px 1px 2px 0px lightblue;\r\n    background: #FFF;\r\n    width: 10%;\r\n    padding: 1rem 1rem;\r\n    height: -webkit-fit-content;\r\n    height: -moz-fit-content;\r\n    height: fit-content;\r\n}\r\n\r\n\r\n.header{\r\n    display:flex;\r\n    flex-direction: row;\r\n    justify-content: space-between;\r\n}\r\n\r\n\r\n.body{\r\n    width:100%;\r\n}\r\n\r\n\r\n.div-box{\r\n    box-shadow: 2px 5px 2px 2px #DCDCDC;\r\n    margin: 0.2rem 5rem;\r\n    padding:0.25rem 0.1rem;\r\n}\r\n\r\n\r\n.header-color{\r\n    background: lightgreen;\r\n    color: #000;\r\n}\r\n\r\n\r\n.content{\r\n    padding: 0.5rem 0.5rem;\r\n    box-shadow:1px 1px 1px 2px #DCDCDC;\r\n    margin: 1.5rem 5rem;\r\n}\r\n\r\n\r\n.align-center{\r\n    text-align: center;\r\n}\r\n\r\n\r\n.width__15{\r\n    width:15%;\r\n}\r\n\r\n\r\n.width__5{\r\n    width:5%;\r\n}\r\n\r\n\r\n.delete{\r\n    cursor: pointer;\r\n}\r\n\r\n\r\nselect , input{\r\n    border: #DCDCDC 1px solid;\r\n    padding: 0.25rem 0.25rem;\r\n}"
 
 /***/ }),
 
@@ -319,7 +380,7 @@ module.exports = ".btn-rule{\r\n    border: blue 2px solid;\r\n    color: blue;\
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div style='display: flex;width:100%;flex-direction: column;'>\r\n    <div class='header'>\r\n        <button class='btn-rule' (click)='addRule()' [disabled]='!tableRules.valid'>Add More Rule</button>\r\n        <app-search></app-search>\r\n    </div>\r\n    <div>\r\n        <div class='header div-box header-color'>\r\n            <div class='align-center width__5'>Sr No.</div>\r\n            <div class='align-center width__15'>Protocol</div>\r\n            <div class='align-center width__15'>Source Ip</div>\r\n            <div class='align-center width__15'>Destination Ip</div>\r\n            <div class='align-center width__15'>Access Type</div>\r\n            <div class='align-center width__5'>Action</div>\r\n        </div>\r\n        <div class='header' style='max-height: 80%;overflow-y: auto;'>\r\n            <form [formGroup]='tableRules' class='body'>\r\n                <div formArrayName=\"rules\" *ngFor=\"let rule of rulesArray.controls; let i = index;\">\r\n                    <div [formGroupName]=\"i\" class='header content'>\r\n\r\n                        <div class='align-center width__5' >{{rulesArray.controls.length - i}}</div>\r\n                        <div class='align-center width__15'>\r\n                            <select formControlName=\"protocol\" placeholder=\"\">\r\n                                <option *ngFor='let protocol of protocols' value='{{protocol.value}}'>{{protocol.name}}</option>\r\n                            </select>\r\n                        </div>\r\n                        <div class='align-center width__15'>\r\n                            <input ipValidator formControlName=\"sourceIp\" placeholder=\"Enter Source IP\">\r\n\r\n                        </div>\r\n                        <div class='align-center width__15'>\r\n                            <input ipValidator formControlName=\"destinationIp\" placeholder=\"Enter Destination IP\">\r\n                        </div>\r\n                        <div class='align-center width__15'>\r\n                            <select formControlName=\"accessType\" placeholder=\"None\">\r\n                                <option *ngFor='let access of accessType' value='{{access.value}}'>{{access.name}}</option>\r\n                            </select>\r\n                        </div>\r\n                        <div (click)='delete(i)' class='align-center width__5 delete'>Action</div>\r\n                    </div>\r\n                </div>\r\n            </form>\r\n        </div>\r\n    </div>\r\n    <div>\r\n        <div>\r\n            <app-pagination-options></app-pagination-options>\r\n        </div>\r\n    </div>\r\n</div>"
+module.exports = "<div style='display: flex;width:100%;flex-direction: column;justify-content: space-between'>\r\n    <div class='header'>\r\n        <button class='btn-rule' (click)='addRule()' [disabled]='!tableRules.valid'>Add More Rule</button>\r\n        <app-search></app-search>\r\n    </div>\r\n    <div>\r\n        <div class='header div-box header-color'>\r\n            <div class='align-center width__5'>Sr No.</div>\r\n            <div class='align-center width__15'>Protocol</div>\r\n            <div class='align-center width__15'>Source Ip</div>\r\n            <div class='align-center width__15'>Destination Ip</div>\r\n            <div class='align-center width__15'>Access Type</div>\r\n            <div class='align-center width__5'>Action</div>\r\n        </div>\r\n        <div class='header' style='max-height: 80%;overflow-y: auto;'>\r\n            <form [formGroup]='tableRules' class='body'>\r\n                <div formArrayName=\"rules\" *ngFor=\"let rule of rulesArray.controls; let i = index;\">\r\n                    <div [formGroupName]=\"i\" class='header content'>\r\n\r\n                        <div class='align-center width__5' >{{rulesArray.controls.length - i}}</div>\r\n                        <div class='align-center width__15'>\r\n                            <select formControlName=\"protocol\">\r\n                                    <option value='' disabled selected>None</option>\r\n                                <option *ngFor='let protocol of protocols' value='{{protocol.value}}'>{{protocol.name}}</option>\r\n                            </select>\r\n                        </div>\r\n                        <div class='align-center width__15'>\r\n                            <input formControlName=\"sourceIp\" placeholder=\"Enter Source IP\">\r\n\r\n                        </div>\r\n                        <div class='align-center width__15'>\r\n                            <input formControlName=\"destinationIp\" placeholder=\"Enter Destination IP\">\r\n                        </div>\r\n                        <div class='align-center width__15'>\r\n                            <select formControlName=\"accessType\">\r\n                                <option value='' disabled selected>None</option>\r\n                                <option *ngFor='let access of accessType' value='{{access.value}}'>{{access.name}}</option>\r\n                            </select>\r\n                        </div>\r\n                        <div (click)='delete(i)' class='align-center width__5 delete'>Action</div>\r\n                    </div>\r\n                </div>\r\n            </form>\r\n        </div>\r\n    </div>\r\n    <div>\r\n        <div style='display:flex;flex-direction: row;justify-content: space-between'>\r\n            <div *ngIf='pageLength >= 1'>Showing 1 to {{pageLength}} of {{totalSize}} entries</div>\r\n            <app-pagination-options></app-pagination-options>\r\n        </div>\r\n    </div>\r\n</div>"
 
 /***/ }),
 
@@ -377,19 +438,20 @@ var InterfaceComponent = /** @class */ (function () {
         });
         this._paginationService.setTableData(this.tableRules);
         this.accessType = [
-            { name: 'none', value: 'none' },
+            { name: 'deny', value: 'deny' },
             { name: 'permit', value: 'permit' }
         ];
         this.protocols = [
-            { name: 'none', value: 'none' },
-            { name: 'ip', value: 'ip' }
+            { name: 'tcp', value: 'tcp' },
+            { name: 'ip', value: 'ip' },
+            { name: 'udp', value: 'udp' }
         ];
         this.formValueChangeListener();
         this._paginationService.tableDataSubject.subscribe(function (data) {
             _this.createPaginatedForm(data);
         });
         this._searchService.searchSubject.subscribe(function (value) {
-            //doo stuff
+            _this.createPaginatedForm(_this._paginationService.searchTableData(value));
         });
     };
     InterfaceComponent.prototype.addRule = function () {
@@ -415,23 +477,26 @@ var InterfaceComponent = /** @class */ (function () {
         this.tableRules.valueChanges.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["debounceTime"])(500), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["distinctUntilChanged"])()).subscribe(function (data) {
             _this.formData = data;
             _this._localstorageService.setItem('table-rules', JSON.stringify(data));
+            _this.totalSize = _this.formData['rules'].length;
         });
     };
     Object.defineProperty(InterfaceComponent.prototype, "rulesArray", {
         get: function () {
-            return this.tableRules.get('rules');
+            return this.ruleArray.get('rules');
         },
         enumerable: true,
         configurable: true
     });
     InterfaceComponent.prototype.createPaginatedForm = function (formValue) {
+        this.pageLength = formValue.length;
         var ruleArray = this.ruleArray.get('rules');
         ruleArray.controls.splice(0, ruleArray.length);
+        var ipPatter = "/^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/";
         for (var i = 0; i < formValue.length; i++) {
             var formGroup = this._fb.group({
                 protocol: [formValue[i].protocol, _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required],
-                sourceIp: [formValue[i].sourceIp, _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required],
-                destinationIp: [formValue[i].destinationIp, _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required],
+                sourceIp: [formValue[i].sourceIp, _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].compose([_angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].pattern(ipPatter)])],
+                destinationIp: [formValue[i].destinationIp, _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].compose([_angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].pattern(ipPatter)])],
                 accessType: [formValue[i].accessType, _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required]
             });
             ruleArray.push(formGroup);
@@ -475,45 +540,44 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var __param = (undefined && undefined.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
 
 
 var IpValidatorDirective = /** @class */ (function () {
-    function IpValidatorDirective() {
-        this.validator = this.ipValidator();
+    function IpValidatorDirective(ipValidator) {
+        this.ipValidator = ipValidator;
     }
     IpValidatorDirective_1 = IpValidatorDirective;
-    IpValidatorDirective.prototype.validate = function (c) {
-        return this.validator(c);
-    };
-    IpValidatorDirective.prototype.ipValidator = function () {
-        return function (control) {
-            var ipRegexp = /^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/;
-            var isValid = ipRegexp.test(control.value);
-            if (isValid) {
-                return null;
-            }
-            else {
-                return {
-                    ipValidator: {
-                        valid: false
-                    }
-                };
-            }
-        };
+    IpValidatorDirective.prototype.validate = function (control) {
+        var ipRegexp = /^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/;
+        var isValid = ipRegexp.test(control.value);
+        if (isValid) {
+            return null;
+        }
+        else {
+            return {
+                ipValidator: false
+            };
+        }
     };
     var IpValidatorDirective_1;
     IpValidatorDirective = IpValidatorDirective_1 = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"])({
-            selector: '[ipValidator][formControlName]',
+            selector: '[ipValidator][formControlName],[ipValidator][formControl]',
             providers: [
                 {
                     provide: _angular_forms__WEBPACK_IMPORTED_MODULE_1__["NG_VALIDATORS"],
-                    useExisting: IpValidatorDirective_1,
+                    useExisting: Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["forwardRef"])(function () {
+                        IpValidatorDirective_1;
+                    }),
                     multi: true
                 }
             ]
         }),
-        __metadata("design:paramtypes", [])
+        __param(0, Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Attribute"])('ipValidator')),
+        __metadata("design:paramtypes", [String])
     ], IpValidatorDirective);
     return IpValidatorDirective;
 }());
@@ -674,12 +738,12 @@ var PaginationOptionsComponent = /** @class */ (function () {
     PaginationOptionsComponent.prototype.createPageObject = function () {
         this.pageObject = [];
         for (var i = 1; i <= this.pageSize; i++) {
-            this.pageObject.push({ name: i, value: i });
+            this.pageObject.push({ name: i, value: i, selected: false });
         }
-        this.pageObject.unshift({ name: 'Prev', value: 'Prev' });
-        this.pageObject.unshift({ name: 'First', value: 'First' });
-        this.pageObject.push({ name: 'Next', value: 'Last' });
-        this.pageObject.push({ name: 'Last', value: 'Last' });
+        this.pageObject.unshift({ name: 'Prev', value: 'Prev', selected: false });
+        this.pageObject.unshift({ name: 'First', value: 'First', selected: false });
+        this.pageObject.push({ name: 'Next', value: 'Last', selected: false });
+        this.pageObject.push({ name: 'Last', value: 'Last', selected: false });
     };
     PaginationOptionsComponent.prototype.pageClicked = function (pageNo) {
         switch (pageNo) {
@@ -812,7 +876,6 @@ var PaginationService = /** @class */ (function () {
             endIndex = formArrayLength;
         }
         this.formValue = this.tableData.value;
-        // let test = formArray.controls.slice(startIndex , endIndex);
         this.formValue = this.formValue['rules'].slice(startIndex, endIndex);
         console.log(this.tableData);
         this.tableDataSubject.next(this.formValue);
@@ -824,6 +887,15 @@ var PaginationService = /** @class */ (function () {
     PaginationService.prototype.pageChanged = function (pageNumber) {
         this.pageNumber = pageNumber;
         this.getTableData(pageNumber, 10);
+    };
+    PaginationService.prototype.searchTableData = function (searchPhrase) {
+        var formValue = this.tableData.value['rules'];
+        formValue = formValue.filter(function (value) {
+            if ((value.sourceIp.indexOf(searchPhrase) > -1) || (value.destinationIp.indexOf(searchPhrase) > -1) || (value.protocol.indexOf(searchPhrase) > -1) || (value.accessType.indexOf(searchPhrase) > -1)) {
+                return value;
+            }
+        });
+        return formValue;
     };
     PaginationService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
@@ -916,6 +988,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
 /* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
+/* harmony import */ var _search_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../search.service */ "./src/app/dashboard-interface/search.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -928,8 +1001,10 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
 var SearchComponent = /** @class */ (function () {
-    function SearchComponent() {
+    function SearchComponent(_searchService) {
+        this._searchService = _searchService;
         this.searchSubject = new rxjs__WEBPACK_IMPORTED_MODULE_1__["Subject"]();
     }
     SearchComponent.prototype.ngOnInit = function () {
@@ -939,7 +1014,7 @@ var SearchComponent = /** @class */ (function () {
         });
     };
     SearchComponent.prototype.inputValueChanged = function (event) {
-        this.searchSubject.next(event);
+        this._searchService.gridSearch(event);
     };
     SearchComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -947,7 +1022,7 @@ var SearchComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./search.component.html */ "./src/app/dashboard-interface/search/search.component.html"),
             styles: [__webpack_require__(/*! ./search.component.css */ "./src/app/dashboard-interface/search/search.component.css")]
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [_search_service__WEBPACK_IMPORTED_MODULE_3__["SearchService"]])
     ], SearchComponent);
     return SearchComponent;
 }());
@@ -963,7 +1038,7 @@ var SearchComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "h1{\r\n    color:#FFF;\r\n    background: rgb(51, 63, 80);\r\n    padding: 1rem 1rem;\r\n    margin: 0;\r\n    text-align: center;\r\n}"
+module.exports = "h1{\r\n    color:#FFF;\r\n    background: rgb(51, 63, 80);\r\n    padding: 1rem 1rem;\r\n    margin: 0;\r\n    text-align: center;\r\n    width: 100%;;\r\n}\r\n\r\n.flex-display{\r\n    display:flex;\r\n}\r\n\r\n.flex-row{\r\n    flex-direction: row;\r\n}\r\n\r\n.flex-col{\r\n    flex-direction: column;\r\n}\r\n\r\n.flex-justify-even{\r\n    justify-content: space-evenly;\r\n}\r\n\r\n.btn-logout{\r\n    background: #FFF;\r\n    border: #DCDCDC 1px solid;\r\n    padding:0.5rem 0.5rem;\r\n    z-index: 5;\r\n    width:10%;\r\n    box-shadow: 5px 2px 2px 1px #DCDCDC;\r\n}"
 
 /***/ }),
 
@@ -974,7 +1049,7 @@ module.exports = "h1{\r\n    color:#FFF;\r\n    background: rgb(51, 63, 80);\r\n
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div style=\"display:flex;flex-direction: row;height: 100%;\">\n        <div>\n                <app-navigation></app-navigation>\n        </div>\n        <div style='width: 100%;'>\n                <h1>Admin Panel</h1>\n                <router-outlet></router-outlet>\n        </div>\n</div>\n<div style='position:absolute;right:0;z-index: 5'>\n        <button>Logout</button>\n</div>\n\n"
+module.exports = "<div style=\"display:flex;flex-direction: row;height: 100%;\">\n        <div>\n                <app-navigation></app-navigation>\n        </div>\n        <div style='width: 100%;' class='flex-display flex-col'>\n                <div class='flex-display flex-row flex-justify-even'>\n                        <h1>Admin Panel</h1>\n                        <div style='background: #FFF; align-items: center;' class='flex-direction flex-row'><img (click)='showLogout()' src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAMqSURBVGhD7dlLqE1RHMfxIwzIIwqRyGMgjzKXPMqIgYgpCgNRBmKgK68JioiYkJJCUUgUQ48BMmGgxMCjkNeNvB/fn3t2Lav/ftx9/87Zg/2rT927z1p77397r7XXPqdRp06dUumF5biDb/jdZu9xGpNQOCriKKwdtttHzEWh6EpYO6mKVxiE3NyFtYMqWYXM6LaqwpjIcxiZGQyrY1mdeNv0vbnNw0lkxruQ8UhyHlabMlpaiK5CmG2w2pXR0kKuIcwiWO3KcC3kJbZA48D6fA/CTITV7icO4niwLY9bISpiCpSxuILwc91W8xBGM+JV/EDS7iFmQumNYwj3k8atkHge10muwC0sRV+kZTQOYTf6aUOQIdDT2zpmyK2QJxgA7xyBdbyY6xg5AM/Mxi9Yx4q5FqJBOgMe0S32CNZxLK6FyAVkRWNFk8Hwv/+lp7tTs3shC2BlIHTrfUDS9gEWw4oKfoxw31lcC3kKzVZxtMS+B6uPbICVrbDaW3pcyBdoma/5fiGs7IfVN6HnyFTEGYXNOAvNilbfROlCNLfrAdgHWdEtotdSax+hvcjLUGyE1b90ITq5IhkHq39MT/gimQ+r/38vZBis/rFzKBL3QvRSdALrMQtZ78z3Ye0jtA5p0VXVdLwTWvJY/Xs82BN6Al+ElbxnggZyf8SZjDew+sTcChEVMwZWNMXqyR/3URE6YSvbEbdP41qIaBWbFp3wPlyGxsRaWFdC0a1a9GqIeyFFB21etIwpsnxPuBaimUwPMa9oIrGOY3EtZCU8ozfEm7COFXMrRF8sxOss/T+968/caExM6Przn2j1oGWQdcyQWyHxN33he/sNLIP2FUcnugOv8RmbEC57dKtqMRofL+Z6a2m9pKuwBtY3KVrNxnmBuN1tTIOK0JcR8ecW10Ika5Uav3SNhNVOvuJZtC2LeyFZniNM2rqpjJYWIiOQpANWmzJaXojGyZKm681tHnIL0RLC6lg1Wonn5h2szlWyC7k5BatzlcxBbvQT8CdYO6iCSygc/QSsX0+tHbWTitCE1K1oPbQaWo6caSPNUPrmvvDv63Xq1InTaPwBbKgb2QK2PRAAAAAASUVORK5CYII=\" /></div>\n                </div>\n                <div style='align-items: flex-end' class='flex-display flex-col'><button class='btn-logout' *ngIf='logoutEnabled' (click)='logout()'>Logout</button></div>\n                <router-outlet></router-outlet>\n        </div>\n</div>\n\n"
 
 /***/ }),
 
@@ -989,6 +1064,8 @@ module.exports = "<div style=\"display:flex;flex-direction: row;height: 100%;\">
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DashboardComponent", function() { return DashboardComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _login_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../login.service */ "./src/app/login.service.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -999,11 +1076,23 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
+
 var DashboardComponent = /** @class */ (function () {
-    function DashboardComponent() {
+    function DashboardComponent(_loginService, _router) {
+        this._loginService = _loginService;
+        this._router = _router;
+        this.logoutEnabled = false;
     }
     DashboardComponent.prototype.ngOnInit = function () {
         console.log('Dashboard');
+    };
+    DashboardComponent.prototype.logout = function () {
+        this._loginService.deleteCookie("nubewelldashboard");
+        this._router.navigate(['/login']);
+    };
+    DashboardComponent.prototype.showLogout = function () {
+        this.logoutEnabled = !this.logoutEnabled;
     };
     DashboardComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -1011,7 +1100,7 @@ var DashboardComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./dashboard.component.html */ "./src/app/dashboard/dashboard.component.html"),
             styles: [__webpack_require__(/*! ./dashboard.component.css */ "./src/app/dashboard/dashboard.component.css")]
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [_login_service__WEBPACK_IMPORTED_MODULE_1__["LoginService"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
     ], DashboardComponent);
     return DashboardComponent;
 }());
@@ -1056,11 +1145,30 @@ var LoginService = /** @class */ (function () {
         }
     }
     LoginService.prototype.setCookie = function () {
-        var date = new Date().getTime();
-        var expires = date + (60 * 60 * 1000);
-        var expiryTime = expires - date;
-        document.cookie = "value=" + new Date().getTime() + "-" + "expiry=" + expires;
+        var now = new Date();
+        var time = now.getTime();
+        var expireTime = time + 1000 * 36000;
+        now.setTime(expireTime);
+        document.cookie = 'nubewelldashboard=' + expireTime + ';expires=' + now.toUTCString() + ';path=/';
         console.log(document.cookie);
+    };
+    LoginService.prototype.getCookie = function (name) {
+        var cookieName = name + "=";
+        var cookieDoc = document.cookie.split('-');
+        for (var i = 0; i < cookieDoc.length; i++) {
+            var cookie = cookieDoc[i];
+            console.log(cookie);
+            if (cookie.indexOf(cookieName) == 0) {
+                console.log(cookie);
+                return cookie.substring(cookieName.length, cookie.length);
+            }
+        }
+    };
+    LoginService.prototype.deleteCookie = function (name) {
+        var now = new Date(0);
+        var expireTime = now.getTime();
+        now.setTime(expireTime);
+        document.cookie = document.cookie + ';expires=' + now.toUTCString() + ';path=/';
     };
     LoginService.prototype.login = function (login) {
         var loginData = localStorage.getItem('login-details');
@@ -1119,6 +1227,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
 /* harmony import */ var _login_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../login.service */ "./src/app/login.service.ts");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _permission_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../permission.service */ "./src/app/permission.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1132,17 +1241,22 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
 var LoginComponent = /** @class */ (function () {
-    function LoginComponent(_fb, _loginService, _router) {
+    function LoginComponent(_fb, _loginService, _router, _permission) {
         this._fb = _fb;
         this._loginService = _loginService;
         this._router = _router;
+        this._permission = _permission;
         this.loginForm = this._fb.group({
             username: [''],
             password: ['']
         });
     }
     LoginComponent.prototype.ngOnInit = function () {
+        if (this._permission.canLoadDashboard()) {
+            this._router.navigate(['/dashboard/interface']);
+        }
     };
     LoginComponent.prototype.login = function (login) {
         if (this._loginService.login(login)) {
@@ -1156,7 +1270,7 @@ var LoginComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./login.component.html */ "./src/app/login/login.component.html"),
             styles: [__webpack_require__(/*! ./login.component.css */ "./src/app/login/login.component.css")]
         }),
-        __metadata("design:paramtypes", [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormBuilder"], _login_service__WEBPACK_IMPORTED_MODULE_2__["LoginService"], _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"]])
+        __metadata("design:paramtypes", [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormBuilder"], _login_service__WEBPACK_IMPORTED_MODULE_2__["LoginService"], _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"], _permission_service__WEBPACK_IMPORTED_MODULE_4__["PermissionService"]])
     ], LoginComponent);
     return LoginComponent;
 }());
@@ -1238,6 +1352,53 @@ var NavigationComponent = /** @class */ (function () {
         __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
     ], NavigationComponent);
     return NavigationComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/permission.service.ts":
+/*!***************************************!*\
+  !*** ./src/app/permission.service.ts ***!
+  \***************************************/
+/*! exports provided: PermissionService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PermissionService", function() { return PermissionService; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _login_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./login.service */ "./src/app/login.service.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var PermissionService = /** @class */ (function () {
+    function PermissionService(_loginService) {
+        this._loginService = _loginService;
+    }
+    PermissionService.prototype.canLoadDashboard = function () {
+        var cookie = this._loginService.getCookie("nubewelldashboard");
+        if (cookie != undefined && cookie != "") {
+            return true;
+        }
+        return false;
+    };
+    PermissionService = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
+            providedIn: 'root'
+        }),
+        __metadata("design:paramtypes", [_login_service__WEBPACK_IMPORTED_MODULE_1__["LoginService"]])
+    ], PermissionService);
+    return PermissionService;
 }());
 
 

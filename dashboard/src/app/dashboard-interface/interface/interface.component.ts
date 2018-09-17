@@ -78,10 +78,11 @@ export class InterfaceComponent implements OnInit {
   }
 
   createRow() {
+    const ipPattern = "(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)/([1-9]|1[0-9]|2[0-9]|3[0-2]|(((128|192|224|240|248|252|254)\.0\.0\.0)|(255\.(0|128|192|224|240|248|252|254)\.0\.0)|(255\.255\.(0|128|192|224|240|248|252|254)\.0)|(255\.255\.255\.(0|128|192|224|240|248|252|254))))";
     return this._fb.group({
       protocol: ['',Validators.required],
-      sourceIp: ['',Validators.required],
-      destinationIp: ['',Validators.required],
+      sourceIp: ['',[Validators.pattern(ipPattern) , Validators.required]],
+      destinationIp: ['',[Validators.pattern(ipPattern) , Validators.required]],
       accessType: ['',Validators.required]
     });
   }
@@ -108,13 +109,13 @@ export class InterfaceComponent implements OnInit {
     this.pageLength = formValue.length;
     let ruleArray = this.ruleArray.get('rules') as FormArray;
     ruleArray.controls.splice(0,ruleArray.length);
-    let ipPatter = "/^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/";
+    const ipPattern = "(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)/([1-9]|1[0-9]|2[0-9]|3[0-2]|(((128|192|224|240|248|252|254)\.0\.0\.0)|(255\.(0|128|192|224|240|248|252|254)\.0\.0)|(255\.255\.(0|128|192|224|240|248|252|254)\.0)|(255\.255\.255\.(0|128|192|224|240|248|252|254))))";
     for(let i =0; i < formValue.length ; i++){
 
       let formGroup = this._fb.group({
         protocol: [formValue[i].protocol,Validators.required],
-        sourceIp: [formValue[i].sourceIp,Validators.compose([Validators.required,Validators.pattern(ipPatter)])],
-        destinationIp: [formValue[i].destinationIp,Validators.compose([Validators.required,Validators.pattern(ipPatter)])],
+        sourceIp: [formValue[i].sourceIp,[Validators.pattern(ipPattern) , Validators.required]],
+        destinationIp: [formValue[i].destinationIp,[Validators.pattern(ipPattern) , Validators.required]],
         accessType: [formValue[i].accessType,Validators.required]
       });
       ruleArray.push(formGroup);

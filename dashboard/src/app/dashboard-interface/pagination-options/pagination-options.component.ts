@@ -38,12 +38,12 @@ export class PaginationOptionsComponent implements OnInit {
   createPageObject(){
     this.pageObject = [];
     for(let i=1; i <=this.pageSize ; i++){
-      this.pageObject.push({name : i , value : i});
+      this.pageObject.push({name : i , value : i , selected : false});
     }
-    this.pageObject.unshift({name : 'Prev', value : 'Prev'});
-    this.pageObject.unshift({name : 'First' , value :'First'});
-    this.pageObject.push({name :'Next' , value : 'Last'});
-    this.pageObject.push({name : 'Last', value : 'Last'});
+    this.pageObject.unshift({name : 'Prev', value : 'Prev' , selected : false});
+    this.pageObject.unshift({name : 'First' , value :'First' , selected : false});
+    this.pageObject.push({name :'Next' , value : 'Last', selected : false});
+    this.pageObject.push({name : 'Last', value : 'Last', selected : false});
   }
 
   pageClicked(pageNo : any){
