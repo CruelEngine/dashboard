@@ -9,8 +9,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { NavigationComponent } from './navigation/navigation.component';
 import { DashboardInterfaceModule } from './dashboard-interface/dashboard-interface.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { IpValidatorDirective } from './dashboard-interface/ip-validator.directive';
-import { LocalstorageDirective } from './dashboard-interface/localstorage.directive';
 import { PopupComponent } from './popup/popup.component';
 
 @NgModule({
@@ -19,8 +17,6 @@ import { PopupComponent } from './popup/popup.component';
     LoginComponent,
     NavigationComponent,
     DashboardComponent,
-    IpValidatorDirective,
-    LocalstorageDirective,
     PopupComponent,
   ],
   imports: [
