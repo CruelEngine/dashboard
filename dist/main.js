@@ -154,12 +154,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./dashboard/dashboard.component */ "./src/app/dashboard/dashboard.component.ts");
 /* harmony import */ var _dashboard_interface_ip_validator_directive__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./dashboard-interface/ip-validator.directive */ "./src/app/dashboard-interface/ip-validator.directive.ts");
 /* harmony import */ var _dashboard_interface_localstorage_directive__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./dashboard-interface/localstorage.directive */ "./src/app/dashboard-interface/localstorage.directive.ts");
+/* harmony import */ var _popup_popup_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./popup/popup.component */ "./src/app/popup/popup.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -183,6 +185,7 @@ var AppModule = /** @class */ (function () {
                 _dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_8__["DashboardComponent"],
                 _dashboard_interface_ip_validator_directive__WEBPACK_IMPORTED_MODULE_9__["IpValidatorDirective"],
                 _dashboard_interface_localstorage_directive__WEBPACK_IMPORTED_MODULE_10__["LocalstorageDirective"],
+                _popup_popup_component__WEBPACK_IMPORTED_MODULE_11__["PopupComponent"],
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
@@ -369,7 +372,7 @@ var DashboardInterfaceModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".btn-rule{\r\n    border: blue 2px solid;\r\n    color: blue;\r\n    box-shadow: 1px 1px 2px 0px lightblue;\r\n    background: #FFF;\r\n    width: 10%;\r\n    padding: 1rem 1rem;\r\n    height: -webkit-fit-content;\r\n    height: -moz-fit-content;\r\n    height: fit-content;\r\n}\r\n\r\n\r\n.header{\r\n    display:flex;\r\n    flex-direction: row;\r\n    justify-content: space-between;\r\n}\r\n\r\n\r\n.body{\r\n    width:100%;\r\n}\r\n\r\n\r\n.div-box{\r\n    box-shadow: 2px 5px 2px 2px #DCDCDC;\r\n    margin: 0.2rem 5rem;\r\n    padding:0.25rem 0.1rem;\r\n}\r\n\r\n\r\n.header-color{\r\n    background: lightgreen;\r\n    color: #000;\r\n}\r\n\r\n\r\n.content{\r\n    padding: 0.5rem 0.5rem;\r\n    box-shadow:1px 1px 1px 2px #DCDCDC;\r\n    margin: 1.5rem 5rem;\r\n}\r\n\r\n\r\n.align-center{\r\n    text-align: center;\r\n}\r\n\r\n\r\n.width__15{\r\n    width:15%;\r\n}\r\n\r\n\r\n.width__5{\r\n    width:5%;\r\n}\r\n\r\n\r\n.delete{\r\n    cursor: pointer;\r\n}\r\n\r\n\r\nselect , input{\r\n    border: #DCDCDC 1px solid;\r\n    padding: 0.25rem 0.25rem;\r\n}"
+module.exports = ".btn-rule{\r\n    border: blue 2px solid;\r\n    color: blue;\r\n    box-shadow: 1px 1px 2px 0px lightblue;\r\n    background: #FFF;\r\n    padding: 0.1rem 0.2rem;\r\n    height: -webkit-fit-content;\r\n    height: -moz-fit-content;\r\n    height: fit-content;\r\n    font-size: 0.1rem;\r\n    margin:0.1rem 0.1rem;\r\n}\r\n\r\n\r\n.header{\r\n    display:flex;\r\n    flex-direction: row;\r\n    justify-content: space-evenly;\r\n    font-size:0.5rem;\r\n    align-items: center;\r\n}\r\n\r\n\r\n.body{\r\n    width:100%;\r\n}\r\n\r\n\r\n.div-box{\r\n    box-shadow: 2px 5px 2px 2px #DCDCDC;\r\n    margin: 0.2rem 0.1rem;\r\n    padding:0.1rem 0.1rem;\r\n}\r\n\r\n\r\n.header-color{\r\n    background: lightgreen;\r\n    color: #000;\r\n}\r\n\r\n\r\n.content{\r\n    padding: 0.1rem 0.1rem;\r\n    box-shadow: 1px 1px 1px 2px #DCDCDC;\r\n    margin: 0.2rem 0.1rem;\r\n}\r\n\r\n\r\n.align-center{\r\n    text-align: center;\r\n}\r\n\r\n\r\n.width__15{\r\n    width:10%;\r\n}\r\n\r\n\r\n.width__5{\r\n    width:5%;\r\n}\r\n\r\n\r\n.delete{\r\n    cursor: pointer;\r\n}\r\n\r\n\r\nselect , input{\r\n    border: #DCDCDC 1px solid;\r\n    padding: 0.1rem 0.15rem;\r\n    font-size: 0.2rem;\r\n    border-radius: 0.1rem;\r\n}\r\n\r\n\r\n@media only screen and (min-width:768px){\r\n    .div-box{\r\n        box-shadow: 2px 5px 2px 2px #DCDCDC;\r\n        margin: 0.2rem 5rem;\r\n        padding:0.25rem 0.1rem;\r\n    }\r\n    .header{\r\n        font-size:1.25rem;\r\n    }\r\n    .content{\r\n        padding: 0.5rem 0.5rem;\r\n        box-shadow:1px 1px 1px 2px #DCDCDC;\r\n        margin: 1.5rem 5rem;\r\n    }\r\n    select , input{\r\n        border: #DCDCDC 1px solid;\r\n        padding: 0.25rem 0.25rem;\r\n        font-size: inherit;\r\n        border-radius: 0.75rem;\r\n    }\r\n    .btn-rule{\r\n        background: #FFF;\r\n        width: 10%;\r\n        padding: 0.75rem 0.75rem;\r\n        height: -webkit-fit-content;\r\n        height: -moz-fit-content;\r\n        height: fit-content;\r\n        font-size: inherit;\r\n        margin:1rem 1rem;\r\n    }\r\n    .width__15{\r\n        width:15%;\r\n    }\r\n    \r\n}"
 
 /***/ }),
 
@@ -380,7 +383,7 @@ module.exports = ".btn-rule{\r\n    border: blue 2px solid;\r\n    color: blue;\
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div style='display: flex;width:100%;flex-direction: column;justify-content: space-between'>\r\n    <div class='header'>\r\n        <button class='btn-rule' (click)='addRule()' [disabled]='!tableRules.valid'>Add More Rule</button>\r\n        <app-search></app-search>\r\n    </div>\r\n    <div>\r\n        <div class='header div-box header-color'>\r\n            <div class='align-center width__5'>Sr No.</div>\r\n            <div class='align-center width__15'>Protocol</div>\r\n            <div class='align-center width__15'>Source Ip</div>\r\n            <div class='align-center width__15'>Destination Ip</div>\r\n            <div class='align-center width__15'>Access Type</div>\r\n            <div class='align-center width__5'>Action</div>\r\n        </div>\r\n        <div class='header' style='max-height: 80%;overflow-y: auto;'>\r\n            <form [formGroup]='tableRules' class='body'>\r\n                <div formArrayName=\"rules\" *ngFor=\"let rule of rulesArray.controls; let i = index;\">\r\n                    <div [formGroupName]=\"i\" class='header content'>\r\n\r\n                        <div class='align-center width__5' >{{rulesArray.controls.length - i}}</div>\r\n                        <div class='align-center width__15'>\r\n                            <select formControlName=\"protocol\">\r\n                                <option value='' disabled selected>None</option>\r\n                                <option *ngFor='let protocol of protocols' value='{{protocol.value}}'>{{protocol.name}}</option>\r\n                            </select>\r\n                        </div>\r\n                        <div class='align-center width__15'>\r\n                            <input formControlName=\"sourceIp\" placeholder=\"Enter Source IP\">\r\n\r\n                        </div>\r\n                        <div class='align-center width__15'>\r\n                            <input formControlName=\"destinationIp\" placeholder=\"Enter Destination IP\">\r\n                        </div>\r\n                        <div class='align-center width__15'>\r\n                            <select formControlName=\"accessType\">\r\n                                <option value='' disabled selected>None</option>\r\n                                <option *ngFor='let access of accessType' value='{{access.value}}'>{{access.name}}</option>\r\n                            </select>\r\n                        </div>\r\n                        <div (click)='delete(i)' class='align-center width__5 delete'>Action</div>\r\n                    </div>\r\n                </div>\r\n            </form>\r\n        </div>\r\n    </div>\r\n    <div>\r\n        <div style='display:flex;flex-direction: row;justify-content: space-between'>\r\n            <div *ngIf='pageLength >= 1'>Showing 1 to {{pageLength}} of {{totalSize}} entries</div>\r\n            <app-pagination-options></app-pagination-options>\r\n        </div>\r\n    </div>\r\n</div>"
+module.exports = "<div style='display: flex;width:100%;flex-direction: column;justify-content: space-between'>\r\n    <div class='header'>\r\n        <button class='btn-rule' (click)='addRule()' [disabled]='!tableRules.valid'>Add More Rule</button>\r\n        <app-search></app-search>\r\n    </div>\r\n    <div>\r\n        <div class='header div-box header-color'>\r\n            <div class='align-center width__5'>Sr No.</div>\r\n            <div class='align-center width__15'>Protocol</div>\r\n            <div class='align-center width__15'>Source Ip</div>\r\n            <div class='align-center width__15'>Destination Ip</div>\r\n            <div class='align-center width__15'>Access Type</div>\r\n            <div class='align-center width__15'>Action</div>\r\n        </div>\r\n        <div class='header'>\r\n            <form [formGroup]='tableRules' class='body'>\r\n                <div formArrayName=\"rules\" *ngFor=\"let rule of rulesArray.controls; let i = index;\">\r\n                    <div [formGroupName]=\"i\" class='header content'>\r\n\r\n                        <div class='align-center width__5' >{{rulesArray.controls.length - i}}</div>\r\n                        <div class='align-center width__15'>\r\n                            <select formControlName=\"protocol\">\r\n                                <option value='' disabled selected>None</option>\r\n                                <option *ngFor='let protocol of protocols' value='{{protocol.value}}'>{{protocol.name}}</option>\r\n                            </select>\r\n                        </div>\r\n                        <div class='align-center width__15'>\r\n                            <input formControlName=\"sourceIp\" placeholder=\"Enter Source IP\">\r\n\r\n                        </div>\r\n                        <div class='align-center width__15'>\r\n                            <input formControlName=\"destinationIp\" placeholder=\"Enter Destination IP\">\r\n                        </div>\r\n                        <div class='align-center width__15'>\r\n                            <select formControlName=\"accessType\">\r\n                                <option value='' disabled selected>None</option>\r\n                                <option *ngFor='let access of accessType' value='{{access.value}}'>{{access.name}}</option>\r\n                            </select>\r\n                        </div>\r\n                        <div (click)='delete(i)' class='align-center width__15 delete'>Action</div>\r\n                    </div>\r\n                </div>\r\n            </form>\r\n        </div>\r\n    </div>\r\n    <div>\r\n        <div class='header'>\r\n            <div *ngIf='pageLength >= 1'>Showing 1 to {{pageLength}} of {{totalSize}} entries</div>\r\n            <app-pagination-options></app-pagination-options>\r\n        </div>\r\n    </div>\r\n</div>"
 
 /***/ }),
 
@@ -674,7 +677,7 @@ var LocalstorageService = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".btn-row{\r\n    display: flex;\r\n    flex-direction: row;\r\n}\r\n\r\n.page{\r\n    padding:0.5rem 1rem;\r\n    border:1px #dcdcdc solid;\r\n}"
+module.exports = ".btn-row{\r\n    display: flex;\r\n    flex-direction: row;\r\n}\r\n\r\n.page{\r\n    padding:0.1rem 0.1rem;\r\n    border:1px #dcdcdc solid;\r\n    font-size: 0.5rem;\r\n}\r\n\r\n@media only screen and (min-width:768px){    \r\n    .page{\r\n        padding:0.5rem 1rem;\r\n        font-size: inherit;\r\n    }\r\n}"
 
 /***/ }),
 
@@ -961,7 +964,7 @@ var SearchService = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".search{\r\n    border: #000 1px solid;\r\n    padding: 0.5rem 0rem;\r\n    margin: 1rem 1rem;\r\n    z-index: 5;\r\n}"
+module.exports = ".search{\r\n    border: #000 1px solid;\r\n    padding: 0.1rem 0.2rem;\r\n    margin: 0.1rem 0.1rem;\r\n    z-index: 5;\r\n    font-size: 0.1rem;\r\n}\r\n\r\n@media only screen and (min-width:768px){\r\n    .search{\r\n        padding: 0.75rem 0.75rem;\r\n        margin: 1rem 1rem;\r\n        font-size: inherit;\r\n    }\r\n}"
 
 /***/ }),
 
@@ -1039,7 +1042,7 @@ var SearchComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "h1{\r\n    color:#FFF;\r\n    background: rgb(51, 63, 80);\r\n    padding: 1rem 1rem;\r\n    margin: 0;\r\n    text-align: center;\r\n    width: 100%;;\r\n}\r\n\r\n.flex-display{\r\n    display:flex;\r\n}\r\n\r\n.flex-row{\r\n    flex-direction: row;\r\n}\r\n\r\n.flex-col{\r\n    flex-direction: column;\r\n}\r\n\r\n.flex-justify-even{\r\n    justify-content: space-evenly;\r\n}\r\n\r\n.btn-logout{\r\n    background: #FFF;\r\n    border: #DCDCDC 1px solid;\r\n    padding:0.5rem 0.5rem;\r\n    z-index: 5;\r\n    width:10%;\r\n    box-shadow: 5px 2px 2px 1px #DCDCDC;\r\n}"
+module.exports = "h1{\r\n    color: #FFF;\r\n    background: rgb(51, 63, 80);\r\n    padding: 0.1rem 0.1rem;\r\n    margin: 0;\r\n    text-align: center;\r\n    width: 100%;\r\n    font-size: 0.75rem;\r\n}\r\n\r\n.flex-display{\r\n    display:flex;\r\n}\r\n\r\n.flex-row{\r\n    flex-direction: row;\r\n}\r\n\r\n.flex-col{\r\n    flex-direction: column;\r\n}\r\n\r\n.flex-justify-even{\r\n    justify-content: space-evenly;\r\n}\r\n\r\n.btn-logout{\r\n    background: #FFF;\r\n    border: #DCDCDC 1px solid;\r\n    padding:0.1rem 0.1rem;\r\n    z-index: 5;\r\n    box-shadow: 5px 2px 2px 1px #DCDCDC;\r\n}\r\n\r\nimg{\r\n    width:0.75rem;\r\n    height:0.75rem;\r\n}\r\n\r\n@media only screen and (min-width : 768px){\r\n    .btn-logout{\r\n        padding:0.5rem 0.5rem;\r\n        z-index: 5;\r\n        width:10%;\r\n    }\r\n\r\n    h1{\r\n        padding: 1rem 1rem;\r\n        width: 100%;;\r\n        font-size: 2rem;\r\n    }\r\n    img{\r\n        width:inherit;\r\n        height:inherit;\r\n    }\r\n\r\n}"
 
 /***/ }),
 
@@ -1050,7 +1053,7 @@ module.exports = "h1{\r\n    color:#FFF;\r\n    background: rgb(51, 63, 80);\r\n
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div style=\"display:flex;flex-direction: row;height: 100%;\">\n        <div>\n                <app-navigation></app-navigation>\n        </div>\n        <div style='width: 100%;' class='flex-display flex-col'>\n                <div class='flex-display flex-row flex-justify-even'>\n                        <h1>Admin Panel</h1>\n                        <div style='background: #FFF; align-items: center;' class='flex-direction flex-row'><img (click)='showLogout()' src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAMqSURBVGhD7dlLqE1RHMfxIwzIIwqRyGMgjzKXPMqIgYgpCgNRBmKgK68JioiYkJJCUUgUQ48BMmGgxMCjkNeNvB/fn3t2Lav/ftx9/87Zg/2rT927z1p77397r7XXPqdRp06dUumF5biDb/jdZu9xGpNQOCriKKwdtttHzEWh6EpYO6mKVxiE3NyFtYMqWYXM6LaqwpjIcxiZGQyrY1mdeNv0vbnNw0lkxruQ8UhyHlabMlpaiK5CmG2w2pXR0kKuIcwiWO3KcC3kJbZA48D6fA/CTITV7icO4niwLY9bISpiCpSxuILwc91W8xBGM+JV/EDS7iFmQumNYwj3k8atkHge10muwC0sRV+kZTQOYTf6aUOQIdDT2zpmyK2QJxgA7xyBdbyY6xg5AM/Mxi9Yx4q5FqJBOgMe0S32CNZxLK6FyAVkRWNFk8Hwv/+lp7tTs3shC2BlIHTrfUDS9gEWw4oKfoxw31lcC3kKzVZxtMS+B6uPbICVrbDaW3pcyBdoma/5fiGs7IfVN6HnyFTEGYXNOAvNilbfROlCNLfrAdgHWdEtotdSax+hvcjLUGyE1b90ITq5IhkHq39MT/gimQ+r/38vZBis/rFzKBL3QvRSdALrMQtZ78z3Ye0jtA5p0VXVdLwTWvJY/Xs82BN6Al+ElbxnggZyf8SZjDew+sTcChEVMwZWNMXqyR/3URE6YSvbEbdP41qIaBWbFp3wPlyGxsRaWFdC0a1a9GqIeyFFB21etIwpsnxPuBaimUwPMa9oIrGOY3EtZCU8ozfEm7COFXMrRF8sxOss/T+968/caExM6Przn2j1oGWQdcyQWyHxN33he/sNLIP2FUcnugOv8RmbEC57dKtqMRofL+Z6a2m9pKuwBtY3KVrNxnmBuN1tTIOK0JcR8ecW10Ika5Uav3SNhNVOvuJZtC2LeyFZniNM2rqpjJYWIiOQpANWmzJaXojGyZKm681tHnIL0RLC6lg1Wonn5h2szlWyC7k5BatzlcxBbvQT8CdYO6iCSygc/QSsX0+tHbWTitCE1K1oPbQaWo6caSPNUPrmvvDv63Xq1InTaPwBbKgb2QK2PRAAAAAASUVORK5CYII=\" /></div>\n                </div>\n                <div style='align-items: flex-end' class='flex-display flex-col'><button class='btn-logout' *ngIf='logoutEnabled' (click)='logout()'>Logout</button></div>\n                <router-outlet></router-outlet>\n        </div>\n</div>\n\n"
+module.exports = "<div style=\"display:flex;flex-direction: row;height: 100%;\">\n        <div>\n                <app-navigation></app-navigation>\n        </div>\n        <div style='width: 100%;' class='flex-display flex-col'>\n                <div class='flex-display flex-row flex-justify-even'>\n                        <h1>Admin Panel</h1>\n                        <div style='background: #FFF; align-items: center;' class='flex-direction flex-row'><img (click)='showLogout()' src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAMqSURBVGhD7dlLqE1RHMfxIwzIIwqRyGMgjzKXPMqIgYgpCgNRBmKgK68JioiYkJJCUUgUQ48BMmGgxMCjkNeNvB/fn3t2Lav/ftx9/87Zg/2rT927z1p77397r7XXPqdRp06dUumF5biDb/jdZu9xGpNQOCriKKwdtttHzEWh6EpYO6mKVxiE3NyFtYMqWYXM6LaqwpjIcxiZGQyrY1mdeNv0vbnNw0lkxruQ8UhyHlabMlpaiK5CmG2w2pXR0kKuIcwiWO3KcC3kJbZA48D6fA/CTITV7icO4niwLY9bISpiCpSxuILwc91W8xBGM+JV/EDS7iFmQumNYwj3k8atkHge10muwC0sRV+kZTQOYTf6aUOQIdDT2zpmyK2QJxgA7xyBdbyY6xg5AM/Mxi9Yx4q5FqJBOgMe0S32CNZxLK6FyAVkRWNFk8Hwv/+lp7tTs3shC2BlIHTrfUDS9gEWw4oKfoxw31lcC3kKzVZxtMS+B6uPbICVrbDaW3pcyBdoma/5fiGs7IfVN6HnyFTEGYXNOAvNilbfROlCNLfrAdgHWdEtotdSax+hvcjLUGyE1b90ITq5IhkHq39MT/gimQ+r/38vZBis/rFzKBL3QvRSdALrMQtZ78z3Ye0jtA5p0VXVdLwTWvJY/Xs82BN6Al+ElbxnggZyf8SZjDew+sTcChEVMwZWNMXqyR/3URE6YSvbEbdP41qIaBWbFp3wPlyGxsRaWFdC0a1a9GqIeyFFB21etIwpsnxPuBaimUwPMa9oIrGOY3EtZCU8ozfEm7COFXMrRF8sxOss/T+968/caExM6Przn2j1oGWQdcyQWyHxN33he/sNLIP2FUcnugOv8RmbEC57dKtqMRofL+Z6a2m9pKuwBtY3KVrNxnmBuN1tTIOK0JcR8ecW10Ika5Uav3SNhNVOvuJZtC2LeyFZniNM2rqpjJYWIiOQpANWmzJaXojGyZKm681tHnIL0RLC6lg1Wonn5h2szlWyC7k5BatzlcxBbvQT8CdYO6iCSygc/QSsX0+tHbWTitCE1K1oPbQaWo6caSPNUPrmvvDv63Xq1InTaPwBbKgb2QK2PRAAAAAASUVORK5CYII=\" /></div>\n                </div>\n                <div style='align-items: flex-end' class='flex-display flex-col'><button class='btn-logout' *ngIf='logoutEnabled' (click)='logout()'>Logout</button></div>\n                <router-outlet></router-outlet>\n        </div>\n</div>\n<app-popup (dialogClosed)='logout()'></app-popup>\n"
 
 /***/ }),
 
@@ -1067,6 +1070,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _login_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../login.service */ "./src/app/login.service.ts");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _idle_timeout_service_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../idle-timeout-service.service */ "./src/app/idle-timeout-service.service.ts");
+/* harmony import */ var _popup_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../popup.service */ "./src/app/popup.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1079,14 +1084,25 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
+
 var DashboardComponent = /** @class */ (function () {
-    function DashboardComponent(_loginService, _router) {
+    function DashboardComponent(_loginService, _router, _idleTimeoutService, _popupService) {
         this._loginService = _loginService;
         this._router = _router;
+        this._idleTimeoutService = _idleTimeoutService;
+        this._popupService = _popupService;
         this.logoutEnabled = false;
     }
     DashboardComponent.prototype.ngOnInit = function () {
+        var _this = this;
         console.log('Dashboard');
+        this._idleTimeoutService.timeOutSubject.subscribe(function () {
+            _this._popupService.openPopup();
+        });
+        this._idleTimeoutService.expireSessionSubject.subscribe(function (flag) {
+            _this.logout();
+        });
     };
     DashboardComponent.prototype.logout = function () {
         this._loginService.deleteCookie("nubewelldashboard");
@@ -1101,9 +1117,76 @@ var DashboardComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./dashboard.component.html */ "./src/app/dashboard/dashboard.component.html"),
             styles: [__webpack_require__(/*! ./dashboard.component.css */ "./src/app/dashboard/dashboard.component.css")]
         }),
-        __metadata("design:paramtypes", [_login_service__WEBPACK_IMPORTED_MODULE_1__["LoginService"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
+        __metadata("design:paramtypes", [_login_service__WEBPACK_IMPORTED_MODULE_1__["LoginService"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"], _idle_timeout_service_service__WEBPACK_IMPORTED_MODULE_3__["IdleTimeoutServiceService"], _popup_service__WEBPACK_IMPORTED_MODULE_4__["PopupService"]])
     ], DashboardComponent);
     return DashboardComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/idle-timeout-service.service.ts":
+/*!*************************************************!*\
+  !*** ./src/app/idle-timeout-service.service.ts ***!
+  \*************************************************/
+/*! exports provided: IdleTimeoutServiceService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "IdleTimeoutServiceService", function() { return IdleTimeoutServiceService; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var IdleTimeoutServiceService = /** @class */ (function () {
+    function IdleTimeoutServiceService() {
+        this.timeOutSubject = new rxjs__WEBPACK_IMPORTED_MODULE_1__["Subject"]();
+        this.expireSessionSubject = new rxjs__WEBPACK_IMPORTED_MODULE_1__["Subject"]();
+        this.timeOutFlag = true;
+    }
+    IdleTimeoutServiceService.prototype.setSessionAliveTime = function (time) {
+        this.timeoutMiliSecond = time; //converts millisecond to seconds
+        console.log('timeout at : ' + new Date(time));
+        this.startTimer();
+    };
+    IdleTimeoutServiceService.prototype.startTimer = function () {
+        var _this = this;
+        if (this.timoutSubscription != undefined) {
+            this.timoutSubscription.unsubscribe();
+        }
+        var timeObservable = Object(rxjs__WEBPACK_IMPORTED_MODULE_1__["timer"])(new Date(this.timeoutMiliSecond));
+        this.timoutSubscription = timeObservable.subscribe(function () {
+            if (_this.timeOutFlag) {
+                _this.timeOutSubject.next(true);
+                _this.timeOutFlag = false;
+            }
+            else {
+                _this.expireSessionSubject.next(true);
+            }
+        });
+    };
+    IdleTimeoutServiceService.prototype.resetTimer = function () {
+        var expiryTime = (2 * 60 * 1000);
+        this.setSessionAliveTime(expiryTime);
+    };
+    IdleTimeoutServiceService = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
+            providedIn: 'root'
+        }),
+        __metadata("design:paramtypes", [])
+    ], IdleTimeoutServiceService);
+    return IdleTimeoutServiceService;
 }());
 
 
@@ -1148,7 +1231,7 @@ var LoginService = /** @class */ (function () {
     LoginService.prototype.setCookie = function () {
         var now = new Date();
         var time = now.getTime();
-        var expireTime = time + 1000 * 36000;
+        var expireTime = time + 1000 * 36000; //60 minutes
         now.setTime(expireTime);
         document.cookie = 'nubewelldashboard=' + expireTime + ';expires=' + now.toUTCString() + ';path=/';
         console.log(document.cookie);
@@ -1210,7 +1293,7 @@ module.exports = ".login-window{\r\n    position: absolute;\r\n    width:50%;\r\
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class='login-window window-center border-round'>\n  <div class='login-detail'>\n    <form [formGroup]='loginForm' (ngSubmit)='login(loginForm.value)'>\n        <h1>Nubewell Networks</h1>\n        <div class='login-align '>\n          <input class='login-input border-round' placeholder='Username' formControlName='username'/>\n        </div>\n        <div class='login-align'>\n          <input class='login-input border-round' placeholder='Password' formControlName='password'/>\n        </div>\n        <div class=\"login-align\">\n          <button class='login-btn border-round' >Login</button>\n        </div>\n    </form>\n\n  </div>\n</div>\n\n<div class='background'></div>"
+module.exports = "<div class='login-window window-center border-round'>\n  <div class='login-detail'>\n    <form [formGroup]='loginForm' (ngSubmit)='login(loginForm.value)'>\n        <h1>Nubewell Networks</h1>\n        <div class='login-align '>\n          <input class='login-input border-round' placeholder='Username' formControlName='username'/>\n        </div>\n        <div class='login-align'>\n          <input class='login-input border-round' placeholder='Password' formControlName='password' type='password'/>\n        </div>\n        <div class=\"login-align\">\n          <button class='login-btn border-round' >Login</button>\n        </div>\n    </form>\n\n  </div>\n</div>\n\n<div class='background'></div>"
 
 /***/ }),
 
@@ -1229,6 +1312,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _login_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../login.service */ "./src/app/login.service.ts");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var _permission_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../permission.service */ "./src/app/permission.service.ts");
+/* harmony import */ var _idle_timeout_service_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../idle-timeout-service.service */ "./src/app/idle-timeout-service.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1243,12 +1327,14 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
 var LoginComponent = /** @class */ (function () {
-    function LoginComponent(_fb, _loginService, _router, _permission) {
+    function LoginComponent(_fb, _loginService, _router, _permission, _idleTimeoutService) {
         this._fb = _fb;
         this._loginService = _loginService;
         this._router = _router;
         this._permission = _permission;
+        this._idleTimeoutService = _idleTimeoutService;
         this.loginForm = this._fb.group({
             username: [''],
             password: ['']
@@ -1256,14 +1342,22 @@ var LoginComponent = /** @class */ (function () {
     }
     LoginComponent.prototype.ngOnInit = function () {
         if (this._permission.canLoadDashboard()) {
+            this.setTimeoutPopup();
             this._router.navigate(['/dashboard/interface']);
         }
     };
     LoginComponent.prototype.login = function (login) {
         if (this._loginService.login(login)) {
             this._loginService.setCookie();
+            this.setTimeoutPopup();
             this._router.navigate(['/dashboard/interface']);
         }
+    };
+    LoginComponent.prototype.setTimeoutPopup = function () {
+        var timeout = document.cookie.split('=');
+        var timeStamp = parseInt(timeout[1]) - (2 * 60 * 1000);
+        console.log(timeStamp + " - " + new Date(timeStamp));
+        this._idleTimeoutService.setSessionAliveTime(timeStamp);
     };
     LoginComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -1271,7 +1365,9 @@ var LoginComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./login.component.html */ "./src/app/login/login.component.html"),
             styles: [__webpack_require__(/*! ./login.component.css */ "./src/app/login/login.component.css")]
         }),
-        __metadata("design:paramtypes", [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormBuilder"], _login_service__WEBPACK_IMPORTED_MODULE_2__["LoginService"], _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"], _permission_service__WEBPACK_IMPORTED_MODULE_4__["PermissionService"]])
+        __metadata("design:paramtypes", [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormBuilder"], _login_service__WEBPACK_IMPORTED_MODULE_2__["LoginService"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"], _permission_service__WEBPACK_IMPORTED_MODULE_4__["PermissionService"],
+            _idle_timeout_service_service__WEBPACK_IMPORTED_MODULE_5__["IdleTimeoutServiceService"]])
     ], LoginComponent);
     return LoginComponent;
 }());
@@ -1287,7 +1383,7 @@ var LoginComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".nav{\r\n    display:flex;\r\n    flex-direction: column;\r\n    z-index: 5;\r\n    background: rgb(47, 85, 151);\r\n    height: 100%;\r\n}\r\n\r\n\r\n.nav-backdrop{\r\n    opacity: 0.2;\r\n    background: #DCDCDC;\r\n    width:100%;\r\n    height:100%;\r\n    z-index: 3;\r\n}\r\n\r\n\r\n.nav-position{\r\n}\r\n\r\n\r\n.route{\r\n    margin:0.5rem 1rem;\r\n    padding:1rem 1rem;\r\n    color: #FFF;\r\n    font-size: 1.25rem;\r\n}\r\n\r\n\r\n.routes{\r\n    display: flex;\r\n    flex-direction: column;\r\n    justify-content: center;\r\n    align-content: space-around;\r\n}\r\n\r\n\r\n.selected{\r\n    background:rgb(143, 170, 220);\r\n}"
+module.exports = ".nav{\r\n    display:flex;\r\n    flex-direction: column;\r\n    z-index: 5;\r\n    background: rgb(47, 85, 151);\r\n    height: 100%;\r\n}\r\n\r\n\r\n.nav-backdrop{\r\n    opacity: 0.2;\r\n    background: #DCDCDC;\r\n    width:100%;\r\n    height:100%;\r\n    z-index: 3;\r\n}\r\n\r\n\r\n.route{\r\n    margin:0.25rem 0.25rem;\r\n    padding:0.25rem 0.25rem;\r\n    color: #FFF;\r\n    font-size: 0.5rem;\r\n}\r\n\r\n\r\n.routes{\r\n    display: flex;\r\n    flex-direction: column;\r\n    justify-content: center;\r\n    align-content: space-around;\r\n}\r\n\r\n\r\nh1{\r\n    font-size: 0.75rem;\r\n    text-align: center;\r\n    margin:0;\r\n    background: #DCDCDC;\r\n}\r\n\r\n\r\n.selected{\r\n    background:rgb(143, 170, 220);\r\n}\r\n\r\n\r\n@media only screen  and (min-width:768px){\r\n    .route{\r\n        font-size: 1.25rem;\r\n        margin:0.5rem 1rem;\r\n        padding:1rem 1rem;\r\n    }\r\n    h1{\r\n        font-size: 2rem;\r\n    }\r\n}"
 
 /***/ }),
 
@@ -1298,7 +1394,7 @@ module.exports = ".nav{\r\n    display:flex;\r\n    flex-direction: column;\r\n 
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class='nav-open'></div>\n<div class='nav nav-position'>\n  <div *ngFor='let navigationOption of navigationOptions' class='routes'>\n    <div class='route' [ngClass]='navigationOption.isSelected ? \"selected\" : \"\"' routerLink='{{navigationOption.path}}'>{{navigationOption.name}}</div>\n  </div>\n</div>"
+module.exports = "<div class='nav nav-position'>\n  <h1>Nubewell Networks</h1>\n  <div *ngFor='let navigationOption of navigationOptions' class='routes'>\n    <div class='route' [ngClass]='navigationOption.isSelected ? \"selected\" : \"\"' routerLink='{{navigationOption.path}}'>{{navigationOption.name}}</div>\n  </div>\n</div>"
 
 /***/ }),
 
@@ -1400,6 +1496,131 @@ var PermissionService = /** @class */ (function () {
         __metadata("design:paramtypes", [_login_service__WEBPACK_IMPORTED_MODULE_1__["LoginService"]])
     ], PermissionService);
     return PermissionService;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/popup.service.ts":
+/*!**********************************!*\
+  !*** ./src/app/popup.service.ts ***!
+  \**********************************/
+/*! exports provided: PopupService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PopupService", function() { return PopupService; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var PopupService = /** @class */ (function () {
+    function PopupService() {
+        this.popupSubject = new rxjs__WEBPACK_IMPORTED_MODULE_1__["Subject"]();
+    }
+    PopupService.prototype.openPopup = function () {
+        this.popupSubject.next(true);
+    };
+    PopupService = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
+            providedIn: 'root'
+        }),
+        __metadata("design:paramtypes", [])
+    ], PopupService);
+    return PopupService;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/popup/popup.component.css":
+/*!*******************************************!*\
+  !*** ./src/app/popup/popup.component.css ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ".dialog {\r\n    position: absolute;\r\n    z-index: 6;\r\n    padding-top: 10%;\r\n    left: 0;\r\n    top: 0;\r\n    right: 0;\r\n    bottom: 0;\r\n    width: 100%;\r\n    height: 100%;\r\n    overflow: auto;\r\n    background-color: rgb(0, 0, 0);\r\n    background-color: rgba(0, 0, 0, 0.4);\r\n}\r\n\r\n.dialog-message {\r\n    background-color: #fefefe;\r\n    margin: auto;\r\n    padding: 20px;\r\n    border: 1px solid #888;\r\n    width: 40%;\r\n    text-align: center;\r\n    border-radius: 10px;\r\n}\r\n\r\n.dialog-button {\r\n    border: 1px solid #DCDCDC;\r\n    padding: 5px 50px;\r\n    cursor: pointer;\r\n}\r\n\r\n@media only screen and (max-width: 768px) {\r\n    .dialog {\r\n        font-size: 1em;\r\n    }\r\n    .dialog-message {\r\n        font-size: 0.875em;\r\n    }\r\n}\r\n\r\n.align-center {\r\n    text-align: center;\r\n}"
+
+/***/ }),
+
+/***/ "./src/app/popup/popup.component.html":
+/*!********************************************!*\
+  !*** ./src/app/popup/popup.component.html ***!
+  \********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div class='dialog' *ngIf='showPopup'>\n  <div class='dialog-message'>\n    <p>Session Expiring</p>\n    <span class='dialog-button' (click)='closeDialog()'>OK</span>\n  </div>\n</div>"
+
+/***/ }),
+
+/***/ "./src/app/popup/popup.component.ts":
+/*!******************************************!*\
+  !*** ./src/app/popup/popup.component.ts ***!
+  \******************************************/
+/*! exports provided: PopupComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PopupComponent", function() { return PopupComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _popup_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../popup.service */ "./src/app/popup.service.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var PopupComponent = /** @class */ (function () {
+    function PopupComponent(_popupService) {
+        this._popupService = _popupService;
+        this.showPopup = false;
+        this.dialogClosed = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
+    }
+    PopupComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this._popupService.popupSubject.subscribe(function (value) {
+            _this.showPopup = true;
+        });
+    };
+    PopupComponent.prototype.closeDialog = function () {
+        this.showPopup = false;
+        this.dialogClosed.emit(this.showPopup);
+    };
+    PopupComponent.prototype.openDialog = function () {
+    };
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"])(),
+        __metadata("design:type", _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"])
+    ], PopupComponent.prototype, "dialogClosed", void 0);
+    PopupComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-popup',
+            template: __webpack_require__(/*! ./popup.component.html */ "./src/app/popup/popup.component.html"),
+            styles: [__webpack_require__(/*! ./popup.component.css */ "./src/app/popup/popup.component.css")]
+        }),
+        __metadata("design:paramtypes", [_popup_service__WEBPACK_IMPORTED_MODULE_1__["PopupService"]])
+    ], PopupComponent);
+    return PopupComponent;
 }());
 
 

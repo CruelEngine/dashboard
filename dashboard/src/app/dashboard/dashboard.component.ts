@@ -21,6 +21,9 @@ export class DashboardComponent implements OnInit {
     this._idleTimeoutService.timeOutSubject.subscribe( ()=>{
       this._popupService.openPopup();
     });
+    this._idleTimeoutService.expireSessionSubject.subscribe((flag : boolean) =>{
+      this.logout();
+    });
   }
 
   logout(){

@@ -13,6 +13,13 @@ export class IdleTimeoutServiceService {
 
   timeOutSubject : Subject<boolean> = new Subject<boolean>();
 
+  expireSessionSubject : Subject<boolean> = new Subject<boolean>();
+
+  timeOutFlag : boolean = true;
+
+  timoutSubscription : any;
+
+
   constructor() {
 
 
@@ -27,11 +34,26 @@ export class IdleTimeoutServiceService {
   }
 
   startTimer() {
+    if(this.timoutSubscription != undefined){
+      this.timoutSubscription.unsubscribe();
+    }
     const timeObservable = timer(new Date(this.timeoutMiliSecond));
 
-    timeObservable.subscribe( () =>{
-      this.timeOutSubject.next(true);
+    this.timoutSubscription = timeObservable.subscribe( () =>{
+      if(this.timeOutFlag){
+        this.timeOutSubject.next(true);
+        this.timeOutFlag = false;
+      }else{
+        this.expireSessionSubject.next(true)
+      }
     });
+  }
+
+
+  resetTimer(){
+    let expiryTime = (2*60*1000);
+
+    this.setSessionAliveTime(expiryTime);
   }
 
 }

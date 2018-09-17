@@ -3,16 +3,19 @@
     color: blue;
     box-shadow: 1px 1px 2px 0px lightblue;
     background: #FFF;
-    width: 10%;
-    padding: 1rem 1rem;
+    padding: 0.1rem 0.2rem;
     height: fit-content;
+    font-size: 0.1rem;
+    margin:0.1rem 0.1rem;
 }
 
 
 .header{
     display:flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-evenly;
+    font-size:0.5rem;
+    align-items: center;
 }
 
 .body{
@@ -21,8 +24,8 @@
 
 .div-box{
     box-shadow: 2px 5px 2px 2px #DCDCDC;
-    margin: 0.2rem 5rem;
-    padding:0.25rem 0.1rem;
+    margin: 0.2rem 0.1rem;
+    padding:0.1rem 0.1rem;
 }
 
 .header-color{
@@ -32,9 +35,9 @@
 
 
 .content{
-    padding: 0.5rem 0.5rem;
-    box-shadow:1px 1px 1px 2px #DCDCDC;
-    margin: 1.5rem 5rem;
+    padding: 0.1rem 0.1rem;
+    box-shadow: 1px 1px 1px 2px #DCDCDC;
+    margin: 0.2rem 0.1rem;
 }
 
 .align-center{
@@ -42,7 +45,7 @@
 }
 
 .width__15{
-    width:15%;
+    width:10%;
 }
 
 .width__5{
@@ -56,5 +59,42 @@
 
 select , input{
     border: #DCDCDC 1px solid;
-    padding: 0.25rem 0.25rem;
+    padding: 0.1rem 0.15rem;
+    font-size: 0.2rem;
+    border-radius: 0.1rem;
+}
+
+
+@media only screen and (min-width:768px){
+    .div-box{
+        box-shadow: 2px 5px 2px 2px #DCDCDC;
+        margin: 0.2rem 5rem;
+        padding:0.25rem 0.1rem;
+    }
+    .header{
+        font-size:1.25rem;
+    }
+    .content{
+        padding: 0.5rem 0.5rem;
+        box-shadow:1px 1px 1px 2px #DCDCDC;
+        margin: 1.5rem 5rem;
+    }
+    select , input{
+        border: #DCDCDC 1px solid;
+        padding: 0.25rem 0.25rem;
+        font-size: inherit;
+        border-radius: 0.75rem;
+    }
+    .btn-rule{
+        background: #FFF;
+        width: 10%;
+        padding: 0.75rem 0.75rem;
+        height: fit-content;
+        font-size: inherit;
+        margin:1rem 1rem;
+    }
+    .width__15{
+        width:15%;
+    }
+    
 }

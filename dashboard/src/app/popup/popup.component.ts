@@ -9,24 +9,25 @@ import { PopupService } from '../popup.service';
 export class PopupComponent implements OnInit {
 
 
-  showPopup : boolean = false;
-  @Output() dialogClosed : EventEmitter<boolean> = new EventEmitter<boolean>();
+  showPopup: boolean = false;
+  @Output() dialogClosed: EventEmitter<boolean> = new EventEmitter<boolean>();
 
 
-  constructor(private _popupService : PopupService) { }
+  constructor(private _popupService: PopupService) { }
 
   ngOnInit() {
+    this._popupService.popupSubject.subscribe((value) => {
+      this.showPopup = true;
+    });
   }
 
 
-  closeDialog(){
+  closeDialog() {
     this.showPopup = false;
     this.dialogClosed.emit(this.showPopup);
   }
 
-  openDialog(){
-    this._popupService.popupSubject.subscribe((value) =>{
-      this.showPopup = true;
-    });
+  openDialog() {
+
   }
 }

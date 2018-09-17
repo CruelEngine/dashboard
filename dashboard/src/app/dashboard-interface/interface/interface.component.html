@@ -10,9 +10,9 @@
             <div class='align-center width__15'>Source Ip</div>
             <div class='align-center width__15'>Destination Ip</div>
             <div class='align-center width__15'>Access Type</div>
-            <div class='align-center width__5'>Action</div>
+            <div class='align-center width__15'>Action</div>
         </div>
-        <div class='header' style='max-height: 80%;overflow-y: auto;'>
+        <div class='header'>
             <form [formGroup]='tableRules' class='body'>
                 <div formArrayName="rules" *ngFor="let rule of rulesArray.controls; let i = index;">
                     <div [formGroupName]="i" class='header content'>
@@ -37,14 +37,14 @@
                                 <option *ngFor='let access of accessType' value='{{access.value}}'>{{access.name}}</option>
                             </select>
                         </div>
-                        <div (click)='delete(i)' class='align-center width__5 delete'>Action</div>
+                        <div (click)='delete(i)' class='align-center width__15 delete'>Action</div>
                     </div>
                 </div>
             </form>
         </div>
     </div>
     <div>
-        <div style='display:flex;flex-direction: row;justify-content: space-between'>
+        <div class='header'>
             <div *ngIf='pageLength >= 1'>Showing 1 to {{pageLength}} of {{totalSize}} entries</div>
             <app-pagination-options></app-pagination-options>
         </div>

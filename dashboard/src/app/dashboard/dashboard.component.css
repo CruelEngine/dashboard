@@ -1,10 +1,11 @@
 h1{
-    color:#FFF;
+    color: #FFF;
     background: rgb(51, 63, 80);
-    padding: 1rem 1rem;
+    padding: 0.1rem 0.1rem;
     margin: 0;
     text-align: center;
-    width: 100%;;
+    width: 100%;
+    font-size: 0.75rem;
 }
 
 .flex-display{
@@ -26,8 +27,32 @@ h1{
 .btn-logout{
     background: #FFF;
     border: #DCDCDC 1px solid;
-    padding:0.5rem 0.5rem;
+    padding:0.1rem 0.1rem;
     z-index: 5;
-    width:10%;
     box-shadow: 5px 2px 2px 1px #DCDCDC;
+}
+
+img{
+    width:0.75rem;
+    height:0.75rem;
+}
+
+
+@media only screen and (min-width : 768px){
+    .btn-logout{
+        padding:0.5rem 0.5rem;
+        z-index: 5;
+        width:10%;
+    }
+
+    h1{
+        padding: 1rem 1rem;
+        width: 100%;;
+        font-size: 2rem;
+    }
+    img{
+        width:inherit;
+        height:inherit;
+    }
+
 }

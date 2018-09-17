@@ -29,7 +29,7 @@ export class LoginService {
   setCookie(){
     let now = new Date();
     let time = now.getTime();
-    let expireTime = time + 1000*360; //6 minutes
+    let expireTime = time + 1000*36000; //60 minutes
     now.setTime(expireTime);
 
     document.cookie = 'nubewelldashboard='+ expireTime +';expires='+now.toUTCString()+';path=/';
