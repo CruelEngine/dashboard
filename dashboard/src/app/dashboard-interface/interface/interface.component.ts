@@ -31,6 +31,11 @@ export class InterfaceComponent implements OnInit {
   ruleArray : FormGroup;
 
   pageSize = 10;
+
+  totalSize : number ;
+
+  pageLength : number;
+
   constructor(private _fb: FormBuilder , private _paginationService : PaginationService , 
     private _cdr : ChangeDetectorRef , private _localstorageService : LocalstorageService,
     private _searchService : SearchService) { }
@@ -45,13 +50,14 @@ export class InterfaceComponent implements OnInit {
     });
     this._paginationService.setTableData(this.tableRules);
     this.accessType = [
-      {name : 'none' , value : 'none'},
+      {name : 'deny' , value : 'deny'},
       { name : 'permit' , value : 'permit'}
     ];
 
     this.protocols = [
-      {name : 'none' , value : 'none'},
-      {name : 'ip' , value : 'ip'}
+      {name : 'tcp' , value : 'tcp'},
+      {name : 'ip' , value : 'ip'},
+      {name:'udp' , value : 'udp'}
     ];
     this.formValueChangeListener();
 
@@ -90,6 +96,7 @@ export class InterfaceComponent implements OnInit {
     this.tableRules.valueChanges.pipe(debounceTime(500),distinctUntilChanged()).subscribe( (data) => {
       this.formData = data;
       this._localstorageService.setItem('table-rules',JSON.stringify(data));
+      this.totalSize = this.formData['rules'].length;
     });
   }
 
@@ -98,6 +105,7 @@ export class InterfaceComponent implements OnInit {
   }
 
   createPaginatedForm(formValue : any){
+    this.pageLength = formValue.length;
     let ruleArray = this.ruleArray.get('rules') as FormArray;
     ruleArray.controls.splice(0,ruleArray.length);
     let ipPatter = "/^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/";

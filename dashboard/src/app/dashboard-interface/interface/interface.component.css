@@ -3,6 +3,9 @@
     color: blue;
     box-shadow: 1px 1px 2px 0px lightblue;
     background: #FFF;
+    width: 10%;
+    padding: 1rem 1rem;
+    height: fit-content;
 }
 
 
@@ -29,7 +32,7 @@
 
 
 .content{
-    padding: 1rem 1rem;
+    padding: 0.5rem 0.5rem;
     box-shadow:1px 1px 1px 2px #DCDCDC;
     margin: 1.5rem 5rem;
 }
@@ -48,4 +51,10 @@
 
 .delete{
     cursor: pointer;
+}
+
+
+select , input{
+    border: #DCDCDC 1px solid;
+    padding: 0.25rem 0.25rem;
 }

@@ -1,4 +1,4 @@
-<div style='display: flex;width:100%;flex-direction: column;'>
+<div style='display: flex;width:100%;flex-direction: column;justify-content: space-between'>
     <div class='header'>
         <button class='btn-rule' (click)='addRule()' [disabled]='!tableRules.valid'>Add More Rule</button>
         <app-search></app-search>
@@ -19,7 +19,8 @@
 
                         <div class='align-center width__5' >{{rulesArray.controls.length - i}}</div>
                         <div class='align-center width__15'>
-                            <select formControlName="protocol" placeholder="">
+                            <select formControlName="protocol">
+                                    <option value='' disabled selected>None</option>
                                 <option *ngFor='let protocol of protocols' value='{{protocol.value}}'>{{protocol.name}}</option>
                             </select>
                         </div>
@@ -31,7 +32,8 @@
                             <input formControlName="destinationIp" placeholder="Enter Destination IP">
                         </div>
                         <div class='align-center width__15'>
-                            <select formControlName="accessType" placeholder="None">
+                            <select formControlName="accessType">
+                                <option value='' disabled selected>None</option>
                                 <option *ngFor='let access of accessType' value='{{access.value}}'>{{access.name}}</option>
                             </select>
                         </div>
@@ -42,7 +44,8 @@
         </div>
     </div>
     <div>
-        <div>
+        <div style='display:flex;flex-direction: row;justify-content: space-between'>
+            <div *ngIf='pageLength >= 1'>Showing 1 to {{pageLength}} of {{totalSize}} entries</div>
             <app-pagination-options></app-pagination-options>
         </div>
     </div>

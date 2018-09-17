@@ -4,4 +4,30 @@ h1{
     padding: 1rem 1rem;
     margin: 0;
     text-align: center;
+    width: 100%;;
+}
+
+.flex-display{
+    display:flex;
+}
+
+.flex-row{
+    flex-direction: row;
+}
+
+.flex-col{
+    flex-direction: column;
+}
+
+.flex-justify-even{
+    justify-content: space-evenly;
+}
+
+.btn-logout{
+    background: #FFF;
+    border: #DCDCDC 1px solid;
+    padding:0.5rem 0.5rem;
+    z-index: 5;
+    width:10%;
+    box-shadow: 5px 2px 2px 1px #DCDCDC;
 }

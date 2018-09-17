@@ -27,10 +27,12 @@ export class LoginService {
   }
 
   setCookie(){
-    let date = new Date().getTime();
-    let expires = date + (60*60*1000);
-    let expiryTime = expires-date;
-    document.cookie = "nubewelldashboard="+ new Date().getTime()+"; expiry="+expires;
+    let now = new Date();
+    let time = now.getTime();
+    let expireTime = time + 1000*36000;
+    now.setTime(expireTime);
+
+    document.cookie = 'nubewelldashboard='+ expireTime +';expires='+now.toUTCString()+';path=/';
     console.log(document.cookie);
 
   }
@@ -49,8 +51,12 @@ export class LoginService {
 
   }
 
-  deleteCookie(){
+  deleteCookie(name :String){
+    let now = new Date(0);
+    let expireTime = now.getTime();
+    now.setTime(expireTime);
 
+      document.cookie = document.cookie+';expires='+now.toUTCString()+';path=/'; 
   }
 
   login(login:Login){
