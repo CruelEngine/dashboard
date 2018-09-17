@@ -14,7 +14,7 @@ export class PaginationOptionsComponent implements OnInit {
 
   pageSize : number;
   pageObject : any = [];
-  pageNumber : string;
+  pageNumber : any;
 
   pageNumberSubject : Subject<any> = new Subject<any>();
 
@@ -40,10 +40,34 @@ export class PaginationOptionsComponent implements OnInit {
     for(let i=1; i <=this.pageSize ; i++){
       this.pageObject.push({name : i , value : i});
     }
+    this.pageObject.unshift({name : 'Prev', value : 'Prev'});
+    this.pageObject.unshift({name : 'First' , value :'First'});
+    this.pageObject.push({name :'Next' , value : 'Last'});
+    this.pageObject.push({name : 'Last', value : 'Last'});
   }
 
-  pageClicked(pageNo : string){
-    this.pageNumber = pageNo;
+  pageClicked(pageNo : any){
+
+    switch(pageNo){
+      case 'Prev' :
+      if(this.pageNumber == 1){
+        return;
+      }
+      this.pageNumber = this.pageNumber-1 ; 
+      break;
+      case 'Next':
+      this.pageNumber++;
+      break;
+      case 'First':
+      this.pageNumber = 1;
+      break;
+      case 'Last':
+      this.pageNumber = this.pageSize;
+      break;
+      default:
+      this.pageNumber = pageNo;
+      break;
+    }
     this._paginationService.pageChanged(this.pageNumber);
   }
 

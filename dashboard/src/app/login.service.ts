@@ -30,8 +30,26 @@ export class LoginService {
     let date = new Date().getTime();
     let expires = date + (60*60*1000);
     let expiryTime = expires-date;
-    document.cookie = "value="+new Date().getTime()+"-"+"expiry="+expires;
+    document.cookie = "nubewelldashboard="+ new Date().getTime()+"; expiry="+expires;
     console.log(document.cookie);
+
+  }
+
+  getCookie(name:string){
+    let cookieName = name+"=";
+    let cookieDoc = document.cookie.split('-');
+    for(let i=0; i <cookieDoc.length;i++){
+      let cookie = cookieDoc[i];
+      console.log(cookie);
+      if (cookie.indexOf(cookieName) == 0){
+        console.log(cookie);
+        return cookie.substring(cookieName.length,cookie.length);
+      }
+    }
+
+  }
+
+  deleteCookie(){
 
   }
 

@@ -50,6 +50,7 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 var routes = [
+    { path: '', redirectTo: _routes_enum__WEBPACK_IMPORTED_MODULE_3__["Path"].LOGIN, pathMatch: 'full' },
     { path: _routes_enum__WEBPACK_IMPORTED_MODULE_3__["Path"].LOGIN, component: _login_login_component__WEBPACK_IMPORTED_MODULE_2__["LoginComponent"] },
     { path: _routes_enum__WEBPACK_IMPORTED_MODULE_3__["Path"].DASHBOARD, component: _dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_4__["DashboardComponent"] }
 ];
@@ -418,7 +419,7 @@ var InterfaceComponent = /** @class */ (function () {
     };
     Object.defineProperty(InterfaceComponent.prototype, "rulesArray", {
         get: function () {
-            return this.ruleArray.get('rules');
+            return this.tableRules.get('rules');
         },
         enumerable: true,
         configurable: true
@@ -619,7 +620,7 @@ module.exports = ".btn-row{\r\n    display: flex;\r\n    flex-direction: row;\r\
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class='btn-row'>\n  <div class='page'>First</div>\n  <div  class='page'>Previous</div>\n  <div *ngFor='let page of pageObject'  class='page' (click)='pageClicked(page.value)'>{{page.value}}</div>\n  <div  class='page'>Next</div>\n  <div  class='page'>Last</div>\n</div>"
+module.exports = "<div class='btn-row'>\n  <div *ngFor='let page of pageObject'  class='page' (click)='pageClicked(page.value)'>{{page.name}}</div>\n</div>"
 
 /***/ }),
 
@@ -675,9 +676,32 @@ var PaginationOptionsComponent = /** @class */ (function () {
         for (var i = 1; i <= this.pageSize; i++) {
             this.pageObject.push({ name: i, value: i });
         }
+        this.pageObject.unshift({ name: 'Prev', value: 'Prev' });
+        this.pageObject.unshift({ name: 'First', value: 'First' });
+        this.pageObject.push({ name: 'Next', value: 'Last' });
+        this.pageObject.push({ name: 'Last', value: 'Last' });
     };
     PaginationOptionsComponent.prototype.pageClicked = function (pageNo) {
-        this.pageNumber = pageNo;
+        switch (pageNo) {
+            case 'Prev':
+                if (this.pageNumber == 1) {
+                    return;
+                }
+                this.pageNumber = this.pageNumber - 1;
+                break;
+            case 'Next':
+                this.pageNumber++;
+                break;
+            case 'First':
+                this.pageNumber = 1;
+                break;
+            case 'Last':
+                this.pageNumber = this.pageSize;
+                break;
+            default:
+                this.pageNumber = pageNo;
+                break;
+        }
         this._paginationService.pageChanged(this.pageNumber);
     };
     PaginationOptionsComponent = __decorate([
@@ -979,6 +1003,7 @@ var DashboardComponent = /** @class */ (function () {
     function DashboardComponent() {
     }
     DashboardComponent.prototype.ngOnInit = function () {
+        console.log('Dashboard');
     };
     DashboardComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -989,6 +1014,69 @@ var DashboardComponent = /** @class */ (function () {
         __metadata("design:paramtypes", [])
     ], DashboardComponent);
     return DashboardComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/login.service.ts":
+/*!**********************************!*\
+  !*** ./src/app/login.service.ts ***!
+  \**********************************/
+/*! exports provided: LoginService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LoginService", function() { return LoginService; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var LoginService = /** @class */ (function () {
+    function LoginService() {
+        /**
+         * Use of behavioral subject as it stores the previous value
+         */
+        this.loginSubject = new rxjs__WEBPACK_IMPORTED_MODULE_1__["BehaviorSubject"](null);
+        var loginDetails = localStorage.getItem('login-details');
+        var login = JSON.parse(loginDetails);
+        if (login == undefined) {
+            localStorage.setItem('login-details', JSON.stringify({ username: 'admin', password: 'admin' }));
+        }
+    }
+    LoginService.prototype.setCookie = function () {
+        var date = new Date().getTime();
+        var expires = date + (60 * 60 * 1000);
+        var expiryTime = expires - date;
+        document.cookie = "value=" + new Date().getTime() + "-" + "expiry=" + expires;
+        console.log(document.cookie);
+    };
+    LoginService.prototype.login = function (login) {
+        var loginData = localStorage.getItem('login-details');
+        var loginDetails = JSON.parse(loginData);
+        if (login.username == loginDetails.username && login.password == loginDetails.password) {
+            return true;
+        }
+        return false;
+    };
+    LoginService = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
+            providedIn: 'root'
+        }),
+        __metadata("design:paramtypes", [])
+    ], LoginService);
+    return LoginService;
 }());
 
 
@@ -1029,6 +1117,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LoginComponent", function() { return LoginComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var _login_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../login.service */ "./src/app/login.service.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1040,9 +1130,13 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 };
 
 
+
+
 var LoginComponent = /** @class */ (function () {
-    function LoginComponent(_fb) {
+    function LoginComponent(_fb, _loginService, _router) {
         this._fb = _fb;
+        this._loginService = _loginService;
+        this._router = _router;
         this.loginForm = this._fb.group({
             username: [''],
             password: ['']
@@ -1051,7 +1145,10 @@ var LoginComponent = /** @class */ (function () {
     LoginComponent.prototype.ngOnInit = function () {
     };
     LoginComponent.prototype.login = function (login) {
-        console.log(login);
+        if (this._loginService.login(login)) {
+            this._loginService.setCookie();
+            this._router.navigate(['/dashboard/interface']);
+        }
     };
     LoginComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -1059,7 +1156,7 @@ var LoginComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./login.component.html */ "./src/app/login/login.component.html"),
             styles: [__webpack_require__(/*! ./login.component.css */ "./src/app/login/login.component.css")]
         }),
-        __metadata("design:paramtypes", [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormBuilder"]])
+        __metadata("design:paramtypes", [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormBuilder"], _login_service__WEBPACK_IMPORTED_MODULE_2__["LoginService"], _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"]])
     ], LoginComponent);
     return LoginComponent;
 }());
@@ -1159,7 +1256,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Path", function() { return Path; });
 var Path;
 (function (Path) {
-    Path["LOGIN"] = "dashboard/login";
+    Path["LOGIN"] = "login";
     Path["DASHBOARD"] = "dashboard";
     Path["INTERFACE"] = "interface";
     Path["SETTINGs"] = "dashboard/settings";

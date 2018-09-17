@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { Login } from '../login';
 import { LoginService } from '../login.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { PermissionService } from '../permission.service';
 
 
 @Component({
@@ -14,7 +15,7 @@ export class LoginComponent implements OnInit {
 
   loginForm : FormGroup;
 
-  constructor(private _fb : FormBuilder , private _loginService : LoginService  , private _router : Router) { 
+  constructor(private _fb : FormBuilder , private _loginService : LoginService  , private _router : Router , private _permission : PermissionService) { 
 
     this.loginForm= this._fb.group({
       username : [''],
@@ -23,6 +24,10 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    if(this._permission.canLoadDashboard()){
+      this._router.navigate(['/dashboard/interface']);
+    }
     
   }
 

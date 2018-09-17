@@ -29,9 +29,6 @@ app.get('/api' , (req,res)=>{
     res.send("<h1>Hello World</h1>")
 });
 
-app.get('/login' (req,res) =>{
-    
-}); 
 
 app.get('*',(req,res) => {
     res.sendFile(path.join(__dirname, 'dist/index.html'));
