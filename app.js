@@ -9,7 +9,7 @@ app.use(cookieParser());
 app.use(express.static('${__dirname}'+'/dist'));
 
 
-app.use(function (req, res, next) {
+app.use((req, res, next) =>{
     let cookie = req.cookies.cookieName;
     if (cookie === undefined)
     {
@@ -25,13 +25,20 @@ app.use(function (req, res, next) {
   });
 
 
+  app.get('/' , (req, res) =>{
+    console.log('Test');
+  });
+
+
+
+
 app.get('/api' , (req,res)=>{
     res.send("<h1>Hello World</h1>")
 });
 
 
 app.get('*',(req,res) => {
-    res.sendFile('./dist/index.html');
+    res.sendFile(path.join(__dirname));
 });
 
 
