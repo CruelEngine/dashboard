@@ -75,7 +75,7 @@ export class InterfaceComponent implements OnInit {
 
   addRule() {
     this.rules = this.tableRules.get('rules') as FormArray;
-    this.rules.push(this.createRow());
+    this.rules.insert(0,this.createRow());
     this._paginationService.setTableData(this.tableRules);
   }
 
