@@ -1144,7 +1144,7 @@ var LoginService = /** @class */ (function () {
     LoginService.prototype.setCookie = function () {
         var now = new Date();
         var time = now.getTime();
-        var expireTime = time + 1000 * 36000; //600 minutes
+        var expireTime = time + 1000 * 240; //600 minutes
         now.setTime(expireTime);
         document.cookie = 'nubewelldashboard=' + expireTime + ';expires=' + now.toUTCString() + ';path=/';
         console.log(document.cookie);
