@@ -134,7 +134,8 @@ export class InterfaceComponent implements OnInit {
         rules: this._fb.array([])
       });
 
-      this._paginationService.setTableData(this.tableRules);
+      this.addRule();
+
       return;
     }
 
