@@ -134,7 +134,7 @@ export class InterfaceComponent implements OnInit {
         rules: this._fb.array([])
       });
 
-      this.addRule();
+      // this.addRule();
 
       return;
     }
