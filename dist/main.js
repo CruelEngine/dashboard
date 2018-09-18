@@ -427,13 +427,7 @@ var InterfaceComponent = /** @class */ (function () {
     }
     InterfaceComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.tableRules = this._fb.group({
-            rules: this._fb.array([])
-        });
-        this.ruleArray = this._fb.group({
-            rules: this._fb.array([])
-        });
-        this._paginationService.setTableData(this.tableRules);
+        this.initForm();
         this.accessType = [
             { name: 'deny', value: 'deny' },
             { name: 'permit', value: 'permit' }
@@ -450,7 +444,6 @@ var InterfaceComponent = /** @class */ (function () {
         this._searchService.searchSubject.subscribe(function (value) {
             _this.createPaginatedForm(_this._paginationService.searchTableData(value));
         });
-        this.initForm();
     };
     InterfaceComponent.prototype.addRule = function () {
         this.rules = this.tableRules.get('rules');
@@ -504,6 +497,13 @@ var InterfaceComponent = /** @class */ (function () {
     InterfaceComponent.prototype.initForm = function () {
         var tableRules = JSON.parse(localStorage.getItem('table-rules'));
         if (tableRules == null || tableRules['rules'].length == 0) {
+            this.tableRules = this._fb.group({
+                rules: this._fb.array([])
+            });
+            this.ruleArray = this._fb.group({
+                rules: this._fb.array([])
+            });
+            this._paginationService.setTableData(this.tableRules);
             return;
         }
         var ruleArray = this.tableRules.get('rules');

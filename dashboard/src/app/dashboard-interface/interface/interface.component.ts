@@ -41,14 +41,10 @@ export class InterfaceComponent implements OnInit {
     private _searchService : SearchService) { }
 
   ngOnInit() {
-    this.tableRules = this._fb.group({
-      rules: this._fb.array([])
-    });
+    
+    this.initForm();
 
-    this.ruleArray = this._fb.group({
-      rules: this._fb.array([])
-    });
-    this._paginationService.setTableData(this.tableRules);
+
     this.accessType = [
       {name : 'deny' , value : 'deny'},
       { name : 'permit' , value : 'permit'}
@@ -59,6 +55,7 @@ export class InterfaceComponent implements OnInit {
       {name : 'ip' , value : 'ip'},
       {name:'udp' , value : 'udp'}
     ];
+
     this.formValueChangeListener();
 
     this._paginationService.tableDataSubject.subscribe((data) => {
@@ -69,8 +66,6 @@ export class InterfaceComponent implements OnInit {
     this._searchService.searchSubject.subscribe((value) =>{
       this.createPaginatedForm(this._paginationService.searchTableData(value));
     });
-
-    this.initForm();
   }
 
   addRule() {
@@ -130,11 +125,21 @@ export class InterfaceComponent implements OnInit {
     let tableRules = JSON.parse(localStorage.getItem('table-rules'));
 
     if( tableRules == null || tableRules['rules'].length == 0 ){
+      this.tableRules = this._fb.group({
+        rules: this._fb.array([])
+      });
+      
+  
+      this.ruleArray = this._fb.group({
+        rules: this._fb.array([])
+      });
+
+      this._paginationService.setTableData(this.tableRules);
       return;
     }
 
     let ruleArray = this.tableRules.get('rules') as FormArray;
-    for(let i =0 ; i < tableRules['rules'].length; i++){
+    for(let i = 0 ; i < tableRules['rules'].length; i++){
       ruleArray.push(this.addRow(tableRules['rules'][i]));
     }
     this.pageLength = tableRules['rules'].length;
