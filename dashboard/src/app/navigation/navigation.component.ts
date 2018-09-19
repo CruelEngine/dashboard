@@ -24,7 +24,6 @@ export class NavigationComponent implements OnInit {
 
   ngOnInit() {
 
-    // this._router.events.subscribe( na)
   }
 
 }

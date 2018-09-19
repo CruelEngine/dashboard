@@ -427,7 +427,6 @@ var InterfaceComponent = /** @class */ (function () {
     }
     InterfaceComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.initForm();
         this.accessType = [
             { name: 'deny', value: 'deny' },
             { name: 'permit', value: 'permit' }
@@ -437,13 +436,13 @@ var InterfaceComponent = /** @class */ (function () {
             { name: 'ip', value: 'ip' },
             { name: 'udp', value: 'udp' }
         ];
-        this.formValueChangeListener();
         this._paginationService.tableDataSubject.subscribe(function (data) {
             _this.createPaginatedForm(data);
         });
         this._searchService.searchSubject.subscribe(function (value) {
             _this.createPaginatedForm(_this._paginationService.searchTableData(value));
         });
+        this.initForm();
     };
     InterfaceComponent.prototype.addRule = function () {
         this.rules = this.tableRules.get('rules');
@@ -495,23 +494,25 @@ var InterfaceComponent = /** @class */ (function () {
         }
     };
     InterfaceComponent.prototype.initForm = function () {
+        this.tableRules = this._fb.group({
+            rules: this._fb.array([])
+        });
+        this.ruleArray = this._fb.group({
+            rules: this._fb.array([])
+        });
+        this.formValueChangeListener();
         var tableRules = JSON.parse(localStorage.getItem('table-rules'));
-        if (tableRules == null || tableRules['rules'].length == 0) {
-            this.tableRules = this._fb.group({
-                rules: this._fb.array([])
-            });
-            this.ruleArray = this._fb.group({
-                rules: this._fb.array([])
-            });
-            // this.addRule();
-            return;
+        if (tableRules != null && tableRules['rules'].length > 0) {
+            var ruleArray = this.tableRules.get('rules');
+            for (var i = 0; i < tableRules['rules'].length; i++) {
+                ruleArray.push(this.addRow(tableRules['rules'][i]));
+            }
+            this.pageLength = tableRules['rules'].length;
+            this._paginationService.setTableData(this.tableRules);
         }
-        var ruleArray = this.tableRules.get('rules');
-        for (var i = 0; i < tableRules['rules'].length; i++) {
-            ruleArray.push(this.addRow(tableRules['rules'][i]));
+        if (tableRules['rules'].length == 0) {
+            this.addEmptyRow();
         }
-        this.pageLength = tableRules['rules'].length;
-        this._paginationService.setTableData(this.tableRules);
     };
     InterfaceComponent.prototype.addRow = function (formValue) {
         var ipPattern = "(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)/([1-9]|1[0-9]|2[0-9]|3[0-2]|(((128|192|224|240|248|252|254)\.0\.0\.0)|(255\.(0|128|192|224|240|248|252|254)\.0\.0)|(255\.255\.(0|128|192|224|240|248|252|254)\.0)|(255\.255\.255\.(0|128|192|224|240|248|252|254))))";
@@ -521,6 +522,12 @@ var InterfaceComponent = /** @class */ (function () {
             destinationIp: [formValue.destinationIp, [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].pattern(ipPattern), _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required]],
             accessType: [formValue.accessType, _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required]
         });
+    };
+    InterfaceComponent.prototype.addEmptyRow = function () {
+        var formValue = { protocol: '', sourceIp: '', destinationIp: '', accessType: '' };
+        var rules = this.tableRules.get('rules');
+        rules.insert(0, this.addRow(formValue));
+        this._paginationService.setTableData(this.tableRules);
     };
     InterfaceComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -1351,7 +1358,6 @@ var NavigationComponent = /** @class */ (function () {
         ];
     }
     NavigationComponent.prototype.ngOnInit = function () {
-        // this._router.events.subscribe( na)
     };
     NavigationComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -1555,11 +1561,11 @@ var Path;
     Path["LOGIN"] = "login";
     Path["DASHBOARD"] = "dashboard";
     Path["INTERFACE"] = "interface";
-    Path["SETTINGs"] = "dashboard/settings";
-    Path["USERS"] = "dashboard/users";
-    Path["FILE_UPLOAD"] = "dashboard/file-upload";
-    Path["ALIAS"] = "dashboard/alias";
-    Path["CUSTOM_PROTOCOLS"] = "dashboard/custom-protocols";
+    Path["SETTINGs"] = "settings";
+    Path["USERS"] = "users";
+    Path["FILE_UPLOAD"] = "file-upload";
+    Path["ALIAS"] = "alias";
+    Path["CUSTOM_PROTOCOLS"] = "custom-protocols";
 })(Path || (Path = {}));
 
 
