@@ -19,20 +19,20 @@
 
                         <div class='align-center width__5' >{{rulesArray.controls.length - i}}</div>
                         <div class='align-center width__15'>
-                            <select  formControlName="protocol">
+                            <select  formControlName="protocol" [ngClass]='rule.get("protocol").invalid ? "error" : ""'>
                                 <option value='' disabled selected>None</option>
                                 <option *ngFor='let protocol of protocols' value='{{protocol.value}}'>{{protocol.name}}</option>
                             </select>
                         </div>
                         <div class='align-center width__15'>
-                            <input formControlName="sourceIp" placeholder="Source IP">
+                            <input formControlName="sourceIp" placeholder="Source IP" [ngClass]='rule.get("sourceIp").invalid ? "error" : ""'>
 
                         </div>
                         <div class='align-center width__15'>
-                            <input formControlName="destinationIp" placeholder="Destination IP">
+                            <input formControlName="destinationIp" placeholder="Destination IP" [ngClass]='rule.get("destinationIp").invalid ? "error" : ""'>
                         </div>
                         <div class='align-center width__15'>
-                            <select formControlName="accessType">
+                            <select formControlName="accessType" [ngClass]='rule.get("accessType").invalid ? "error" : ""'>
                                 <option value='' disabled selected>None</option>
                                 <option *ngFor='let access of accessType' value='{{access.value}}'>{{access.name}}</option>
                             </select>
