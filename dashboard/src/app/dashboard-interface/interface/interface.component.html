@@ -13,13 +13,13 @@
             <div class='align-center width__15'>Action</div>
         </div>
         <div class='header'>
-            <form [formGroup]='tableRules' class='body'>
-                <div formArrayName="rules" *ngFor="let rule of rulesArray.controls; let i = index;">
+            <form [formGroup]='ruleArray' class='body'>
+                <div formArrayName="rules" *ngFor="let rule of ruleArray.get('rules').controls; let i = index;">
                     <div [formGroupName]="i" class='header content'>
 
                         <div class='align-center width__5' >{{rulesArray.controls.length - i}}</div>
                         <div class='align-center width__15'>
-                            <select formControlName="protocol">
+                            <select  formControlName="protocol">
                                 <option value='' disabled selected>None</option>
                                 <option *ngFor='let protocol of protocols' value='{{protocol.value}}'>{{protocol.name}}</option>
                             </select>

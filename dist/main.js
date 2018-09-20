@@ -324,12 +324,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _search_search_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./search/search.component */ "./src/app/dashboard-interface/search/search.component.ts");
 /* harmony import */ var _pagination_pipe__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./pagination.pipe */ "./src/app/dashboard-interface/pagination.pipe.ts");
 /* harmony import */ var _pagination_options_pagination_options_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./pagination-options/pagination-options.component */ "./src/app/dashboard-interface/pagination-options/pagination-options.component.ts");
+/* harmony import */ var _validation_validation_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./validation/validation.component */ "./src/app/dashboard-interface/validation/validation.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -349,7 +351,7 @@ var DashboardInterfaceModule = /** @class */ (function () {
                 _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormsModule"],
                 _angular_forms__WEBPACK_IMPORTED_MODULE_2__["ReactiveFormsModule"]
             ],
-            declarations: [_interface_interface_component__WEBPACK_IMPORTED_MODULE_4__["InterfaceComponent"], _search_search_component__WEBPACK_IMPORTED_MODULE_5__["SearchComponent"], _pagination_pipe__WEBPACK_IMPORTED_MODULE_6__["PaginationPipe"], _pagination_options_pagination_options_component__WEBPACK_IMPORTED_MODULE_7__["PaginationOptionsComponent"]]
+            declarations: [_interface_interface_component__WEBPACK_IMPORTED_MODULE_4__["InterfaceComponent"], _search_search_component__WEBPACK_IMPORTED_MODULE_5__["SearchComponent"], _pagination_pipe__WEBPACK_IMPORTED_MODULE_6__["PaginationPipe"], _pagination_options_pagination_options_component__WEBPACK_IMPORTED_MODULE_7__["PaginationOptionsComponent"], _validation_validation_component__WEBPACK_IMPORTED_MODULE_8__["ValidationComponent"]]
         })
     ], DashboardInterfaceModule);
     return DashboardInterfaceModule;
@@ -377,7 +379,7 @@ module.exports = ".btn-rule{\r\n    border: #DCDCDC 2px solid;\r\n    color: #00
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div style='display: flex;width:100%;flex-direction: column;justify-content: space-between'>\r\n    <div class='header'>\r\n        <button class='btn-rule' (click)='addRule()' [disabled]='!tableRules.valid'>Add More Rule</button>\r\n        <app-search></app-search>\r\n    </div>\r\n    <div>\r\n        <div class='header div-box header-color'>\r\n            <div class='align-center width__5'>Sr No.</div>\r\n            <div class='align-center width__15'>Protocol</div>\r\n            <div class='align-center width__15'>Source Ip</div>\r\n            <div class='align-center width__15'>Destination Ip</div>\r\n            <div class='align-center width__15'>Access Type</div>\r\n            <div class='align-center width__15'>Action</div>\r\n        </div>\r\n        <div class='header'>\r\n            <form [formGroup]='tableRules' class='body'>\r\n                <div formArrayName=\"rules\" *ngFor=\"let rule of rulesArray.controls; let i = index;\">\r\n                    <div [formGroupName]=\"i\" class='header content'>\r\n\r\n                        <div class='align-center width__5' >{{rulesArray.controls.length - i}}</div>\r\n                        <div class='align-center width__15'>\r\n                            <select formControlName=\"protocol\">\r\n                                <option value='' disabled selected>None</option>\r\n                                <option *ngFor='let protocol of protocols' value='{{protocol.value}}'>{{protocol.name}}</option>\r\n                            </select>\r\n                        </div>\r\n                        <div class='align-center width__15'>\r\n                            <input formControlName=\"sourceIp\" placeholder=\"Source IP\">\r\n\r\n                        </div>\r\n                        <div class='align-center width__15'>\r\n                            <input formControlName=\"destinationIp\" placeholder=\"Destination IP\">\r\n                        </div>\r\n                        <div class='align-center width__15'>\r\n                            <select formControlName=\"accessType\">\r\n                                <option value='' disabled selected>None</option>\r\n                                <option *ngFor='let access of accessType' value='{{access.value}}'>{{access.name}}</option>\r\n                            </select>\r\n                        </div>\r\n                        <div (click)='delete(i)' class='align-center width__15 delete'><img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAM2SURBVGhD7VnLahRBFJ21b/H1FyrMdAVDYKArgSxcqUFByF7N1i8Yo24CLhSXIhHx8RE+FjE+iC71B3R8YGa6B+IskvHc9k4YJ7e6u/o5hDlwYOi+de85XdXVVTWVMcYYozj4M2eO+66a87Wz2NHO845Wr/D7A7Hjqpd0je55rrpAsdxsNLBeP3UI4hfA975WWxDfi0OKhalVaks5OF3xCAxodRtP2ZOEWtF12tRThRtC8XkMlR87BKWm04Shy1wmP/ycnNwPA49kERkSNb7X6/u4bLbw3YkTGM9rYuEcSBME1eTy2cCbPX0MT+mLVDBXoibVZhnpQMMJT+eTWKgA0myYyTDDC/hYKlAwl1lOMiDB/FDC0ph4NmtNTR3OZ4pNSqeZ6Dvz72MnJSyPvuvcZHnxQM5tv9gb1xd63btL4j2JFEttpHtGuqpl1Su0/hETGUiCen82eoTu/TtizCApJgDa2JrxdO0qy4wGhtVbKYnEQRN9hJnZNtGHpRkMrzcsMxzBUtxiFdu9t8SK/odkZocJBuUYjjURo2XTq1ePslwzEDgnJQijUeCAmTgxcenpifMs1wyaGaTGUQwTmqUJIkbMDZZrBgKfDTeMS5NgCUlNBHTVE5ZrBqbd12LjmIxjJpUJIrbNLNcMvCMfxcYWDDOT2gQIjWss1wwKkhrbcCSM7JqhhcDd8bLTaYbYOIImE3Q97J6UK4oYWg2WawaCdscHkfbIo75EaWvnCMsNB4bXqpREYvGLRrXCMqOB4GtSEhMHzcQZKttmLE0QPe1cYZnRCDZWrtOWEplIgnLfWGm1br3dRa/cEhKVyliLxWHwdrcpJSyDMPHt16w6wPLsQEcwUtIy6OvaRZaVDEiyPJy0aGKP9JDlJAcdV+J9eScVKIL0Keidre5hOelQ2iG2Vp8zO8TuI/hbgf4LlAtmThoFmZvog4YZeib3P3owQz3Ymjm5l8vmB5rNaDqURKQheuErev4SlykG9J2BoUXbFYBIV7VgovF7unqQ0xePwBDWZuAKuCkKFUix1IaOQEs1IIFOAL3p2jkIbOApP0VvvaAJIpgk8Juu0T2Kib0UH2OMMTJApfIXdHQ+5TJKT4cAAAAASUVORK5CYII=\"></div>\r\n                    </div>\r\n                </div>\r\n            </form>\r\n        </div>\r\n    </div>\r\n    <div>\r\n        <div class='header'>\r\n            <div *ngIf='pageLength >= 1'>Showing 1 to {{pageLength}} of {{totalSize}} entries</div>\r\n            <app-pagination-options></app-pagination-options>\r\n        </div>\r\n    </div>\r\n</div>"
+module.exports = "<div style='display: flex;width:100%;flex-direction: column;justify-content: space-between'>\r\n    <div class='header'>\r\n        <button class='btn-rule' (click)='addRule()' [disabled]='!tableRules.valid'>Add More Rule</button>\r\n        <app-search></app-search>\r\n    </div>\r\n    <div>\r\n        <div class='header div-box header-color'>\r\n            <div class='align-center width__5'>Sr No.</div>\r\n            <div class='align-center width__15'>Protocol</div>\r\n            <div class='align-center width__15'>Source Ip</div>\r\n            <div class='align-center width__15'>Destination Ip</div>\r\n            <div class='align-center width__15'>Access Type</div>\r\n            <div class='align-center width__15'>Action</div>\r\n        </div>\r\n        <div class='header'>\r\n            <form [formGroup]='ruleArray' class='body'>\r\n                <div formArrayName=\"rules\" *ngFor=\"let rule of ruleArray.get('rules').controls; let i = index;\">\r\n                    <div [formGroupName]=\"i\" class='header content'>\r\n\r\n                        <div class='align-center width__5' >{{rulesArray.controls.length - i}}</div>\r\n                        <div class='align-center width__15'>\r\n                            <select  formControlName=\"protocol\">\r\n                                <option value='' disabled selected>None</option>\r\n                                <option *ngFor='let protocol of protocols' value='{{protocol.value}}'>{{protocol.name}}</option>\r\n                            </select>\r\n                        </div>\r\n                        <div class='align-center width__15'>\r\n                            <input formControlName=\"sourceIp\" placeholder=\"Source IP\">\r\n\r\n                        </div>\r\n                        <div class='align-center width__15'>\r\n                            <input formControlName=\"destinationIp\" placeholder=\"Destination IP\">\r\n                        </div>\r\n                        <div class='align-center width__15'>\r\n                            <select formControlName=\"accessType\">\r\n                                <option value='' disabled selected>None</option>\r\n                                <option *ngFor='let access of accessType' value='{{access.value}}'>{{access.name}}</option>\r\n                            </select>\r\n                        </div>\r\n                        <div (click)='delete(i)' class='align-center width__15 delete'><img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAM2SURBVGhD7VnLahRBFJ21b/H1FyrMdAVDYKArgSxcqUFByF7N1i8Yo24CLhSXIhHx8RE+FjE+iC71B3R8YGa6B+IskvHc9k4YJ7e6u/o5hDlwYOi+de85XdXVVTWVMcYYozj4M2eO+66a87Wz2NHO845Wr/D7A7Hjqpd0je55rrpAsdxsNLBeP3UI4hfA975WWxDfi0OKhalVaks5OF3xCAxodRtP2ZOEWtF12tRThRtC8XkMlR87BKWm04Shy1wmP/ycnNwPA49kERkSNb7X6/u4bLbw3YkTGM9rYuEcSBME1eTy2cCbPX0MT+mLVDBXoibVZhnpQMMJT+eTWKgA0myYyTDDC/hYKlAwl1lOMiDB/FDC0ph4NmtNTR3OZ4pNSqeZ6Dvz72MnJSyPvuvcZHnxQM5tv9gb1xd63btL4j2JFEttpHtGuqpl1Su0/hETGUiCen82eoTu/TtizCApJgDa2JrxdO0qy4wGhtVbKYnEQRN9hJnZNtGHpRkMrzcsMxzBUtxiFdu9t8SK/odkZocJBuUYjjURo2XTq1ePslwzEDgnJQijUeCAmTgxcenpifMs1wyaGaTGUQwTmqUJIkbMDZZrBgKfDTeMS5NgCUlNBHTVE5ZrBqbd12LjmIxjJpUJIrbNLNcMvCMfxcYWDDOT2gQIjWss1wwKkhrbcCSM7JqhhcDd8bLTaYbYOIImE3Q97J6UK4oYWg2WawaCdscHkfbIo75EaWvnCMsNB4bXqpREYvGLRrXCMqOB4GtSEhMHzcQZKttmLE0QPe1cYZnRCDZWrtOWEplIgnLfWGm1br3dRa/cEhKVyliLxWHwdrcpJSyDMPHt16w6wPLsQEcwUtIy6OvaRZaVDEiyPJy0aGKP9JDlJAcdV+J9eScVKIL0Keidre5hOelQ2iG2Vp8zO8TuI/hbgf4LlAtmThoFmZvog4YZeib3P3owQz3Ymjm5l8vmB5rNaDqURKQheuErev4SlykG9J2BoUXbFYBIV7VgovF7unqQ0xePwBDWZuAKuCkKFUix1IaOQEs1IIFOAL3p2jkIbOApP0VvvaAJIpgk8Juu0T2Kib0UH2OMMTJApfIXdHQ+5TJKT4cAAAAASUVORK5CYII=\"></div>\r\n                    </div>\r\n                </div>\r\n            </form>\r\n        </div>\r\n    </div>\r\n    <div>\r\n        <div class='header'>\r\n            <div *ngIf='pageLength >= 1'>Showing 1 to {{pageLength}} of {{totalSize}} entries</div>\r\n            <app-pagination-options></app-pagination-options>\r\n        </div>\r\n    </div>\r\n</div>"
 
 /***/ }),
 
@@ -440,7 +442,8 @@ var InterfaceComponent = /** @class */ (function () {
             _this.createPaginatedForm(data);
         });
         this._searchService.searchSubject.subscribe(function (value) {
-            _this.createPaginatedForm(_this._paginationService.searchTableData(value));
+            var rule = _this._paginationService.searchTableData(value);
+            _this.createPaginatedForm(rule);
         });
         this.initForm();
     };
@@ -482,6 +485,7 @@ var InterfaceComponent = /** @class */ (function () {
         this.pageLength = formValue.length;
         var ruleArray = this.ruleArray.get('rules');
         ruleArray.controls.splice(0, ruleArray.length);
+        this.ruleArray.reset();
         var ipPattern = "(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)/([1-9]|1[0-9]|2[0-9]|3[0-2]|(((128|192|224|240|248|252|254)\.0\.0\.0)|(255\.(0|128|192|224|240|248|252|254)\.0\.0)|(255\.255\.(0|128|192|224|240|248|252|254)\.0)|(255\.255\.255\.(0|128|192|224|240|248|252|254))))";
         for (var i = 0; i < formValue.length; i++) {
             var formGroup = this._fb.group({
@@ -815,7 +819,7 @@ var PaginationService = /** @class */ (function () {
     PaginationService.prototype.searchTableData = function (searchPhrase) {
         var formValue = this.tableData.value['rules'];
         formValue = formValue.filter(function (value) {
-            if ((value.sourceIp.indexOf(searchPhrase) > -1) || (value.destinationIp.indexOf(searchPhrase) > -1) || (value.protocol.indexOf(searchPhrase) > -1) || (value.accessType.indexOf(searchPhrase) > -1)) {
+            if ((value.sourceIp.includes(searchPhrase)) || (value.destinationIp.includes(searchPhrase)) || (value.protocol.includes(searchPhrase)) || (value.accessType.includes(searchPhrase))) {
                 return value;
             }
         });
@@ -949,6 +953,69 @@ var SearchComponent = /** @class */ (function () {
         __metadata("design:paramtypes", [_search_service__WEBPACK_IMPORTED_MODULE_3__["SearchService"]])
     ], SearchComponent);
     return SearchComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/dashboard-interface/validation/validation.component.css":
+/*!*************************************************************************!*\
+  !*** ./src/app/dashboard-interface/validation/validation.component.css ***!
+  \*************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ""
+
+/***/ }),
+
+/***/ "./src/app/dashboard-interface/validation/validation.component.html":
+/*!**************************************************************************!*\
+  !*** ./src/app/dashboard-interface/validation/validation.component.html ***!
+  \**************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<p>\n  validation works!\n</p>\n"
+
+/***/ }),
+
+/***/ "./src/app/dashboard-interface/validation/validation.component.ts":
+/*!************************************************************************!*\
+  !*** ./src/app/dashboard-interface/validation/validation.component.ts ***!
+  \************************************************************************/
+/*! exports provided: ValidationComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ValidationComponent", function() { return ValidationComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var ValidationComponent = /** @class */ (function () {
+    function ValidationComponent() {
+    }
+    ValidationComponent.prototype.ngOnInit = function () {
+    };
+    ValidationComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-validation',
+            template: __webpack_require__(/*! ./validation.component.html */ "./src/app/dashboard-interface/validation/validation.component.html"),
+            styles: [__webpack_require__(/*! ./validation.component.css */ "./src/app/dashboard-interface/validation/validation.component.css")]
+        }),
+        __metadata("design:paramtypes", [])
+    ], ValidationComponent);
+    return ValidationComponent;
 }());
 
 

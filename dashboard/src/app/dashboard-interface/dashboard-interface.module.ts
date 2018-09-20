@@ -8,6 +8,7 @@ import { InterfaceComponent } from './interface/interface.component';
 import { SearchComponent } from './search/search.component';
 import { PaginationPipe } from './pagination.pipe';
 import { PaginationOptionsComponent } from './pagination-options/pagination-options.component';
+import { ValidationComponent } from './validation/validation.component';
 
 @NgModule({
   imports: [
@@ -16,6 +17,6 @@ import { PaginationOptionsComponent } from './pagination-options/pagination-opti
     FormsModule,
     ReactiveFormsModule
   ],
-  declarations: [InterfaceComponent, SearchComponent, PaginationPipe, PaginationOptionsComponent]
+  declarations: [InterfaceComponent, SearchComponent, PaginationPipe, PaginationOptionsComponent, ValidationComponent]
 })
 export class DashboardInterfaceModule { }

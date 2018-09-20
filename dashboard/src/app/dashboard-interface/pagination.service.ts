@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Rule } from './rule';
 import { FormArray,FormBuilder, FormGroup } from '@angular/forms';
 import { Subject } from 'rxjs';
+import { TableRule } from './table-rule';
 
 @Injectable({
   providedIn: 'root'
@@ -62,7 +63,7 @@ export class PaginationService {
     let formValue = this.tableData.value['rules'];
 
     formValue = formValue.filter( (value) =>{
-       if((value.sourceIp.indexOf(searchPhrase) > -1  ) || (value.destinationIp.indexOf(searchPhrase) > -1  ) || (value.protocol.indexOf(searchPhrase) > -1  ) || (value.accessType.indexOf(searchPhrase) > -1 ) ){
+       if((value.sourceIp.includes(searchPhrase)) || (value.destinationIp.includes(searchPhrase)) || (value.protocol.includes(searchPhrase)) || (value.accessType.includes(searchPhrase))){
          return value;
        }
     });

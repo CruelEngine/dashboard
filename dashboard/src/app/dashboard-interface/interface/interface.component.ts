@@ -59,7 +59,8 @@ export class InterfaceComponent implements OnInit {
 
 
     this._searchService.searchSubject.subscribe((value) => {
-      this.createPaginatedForm(this._paginationService.searchTableData(value));
+      let rule : TableRule = this._paginationService.searchTableData(value);
+      this.createPaginatedForm(rule);
     });
 
 
@@ -104,6 +105,8 @@ export class InterfaceComponent implements OnInit {
     this.pageLength = formValue.length;
     let ruleArray = this.ruleArray.get('rules') as FormArray;
     ruleArray.controls.splice(0, ruleArray.length);
+
+    this.ruleArray.reset();
     const ipPattern = "(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)/([1-9]|1[0-9]|2[0-9]|3[0-2]|(((128|192|224|240|248|252|254)\.0\.0\.0)|(255\.(0|128|192|224|240|248|252|254)\.0\.0)|(255\.255\.(0|128|192|224|240|248|252|254)\.0)|(255\.255\.255\.(0|128|192|224|240|248|252|254))))";
     for (let i = 0; i < formValue.length; i++) {
 
