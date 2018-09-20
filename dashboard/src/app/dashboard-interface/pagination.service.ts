@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Rule } from './rule';
 import { FormArray,FormBuilder, FormGroup } from '@angular/forms';
-import { Subject } from 'rxjs';
+import { Subject, BehaviorSubject } from 'rxjs';
 import { TableRule } from './table-rule';
 
 @Injectable({
@@ -16,7 +16,7 @@ export class PaginationService {
 
   formValue : any = [];
 
-  dataSizeSubject : Subject<any> = new Subject<any>();
+  dataSizeSubject : BehaviorSubject<any> = new BehaviorSubject<any>(0);
 
   tableDataSubject : Subject<any> = new Subject<any>();
 

@@ -785,7 +785,7 @@ var PaginationService = /** @class */ (function () {
     function PaginationService(_fb) {
         this._fb = _fb;
         this.formValue = [];
-        this.dataSizeSubject = new rxjs__WEBPACK_IMPORTED_MODULE_2__["Subject"]();
+        this.dataSizeSubject = new rxjs__WEBPACK_IMPORTED_MODULE_2__["BehaviorSubject"](0);
         this.tableDataSubject = new rxjs__WEBPACK_IMPORTED_MODULE_2__["Subject"]();
         this.pageNumber = 1;
     }
