@@ -137,18 +137,25 @@ export class InterfaceComponent implements OnInit {
 
     let tableRules = JSON.parse(localStorage.getItem('table-rules'));
 
-    if (tableRules != null && tableRules['rules'].length > 0) {
-      let ruleArray = this.tableRules.get('rules') as FormArray;
-      for (let i = 0; i < tableRules['rules'].length; i++) {
-        ruleArray.push(this.addRow(tableRules['rules'][i]));
+    if (tableRules != null) {
+
+      if(tableRules['rules'].length > 0){
+        let ruleArray = this.tableRules.get('rules') as FormArray;
+        for (let i = 0; i < tableRules['rules'].length; i++) {
+          ruleArray.push(this.addRow(tableRules['rules'][i]));
+        }
+        this.pageLength = tableRules['rules'].length;
+        this._paginationService.setTableData(this.tableRules);
       }
-      this.pageLength = tableRules['rules'].length;
-      this._paginationService.setTableData(this.tableRules);
+
+
+
+      if(tableRules['rules'].length == 0){
+        this.addEmptyRow();
+      }
     }
 
-    if(tableRules['rules'].length == 0){
-      this.addEmptyRow();
-    }
+
 
   }
 
